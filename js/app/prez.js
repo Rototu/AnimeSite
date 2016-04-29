@@ -68,10 +68,11 @@
       myButton = $('#b'+i);
       $mySlide.hide();
       $('#slide' + i).show();
+      $("grid-item").show();
       if(i==3) {
         $('#slide3').delay(1500).css('opacity', 1);
         s3 = true;
-        $grid.imagesLoaded().show().masonry('layout');
+        $grid.imagesLoaded().masonry('layout');
       }
     });
   });
@@ -107,9 +108,9 @@
       $mySlide.hide();
       $('#slide3').show().css('opacity', 1);
       s3 = true;
+      $("grid-item").show();
       setTimeout(function() {
         $grid.imagesLoaded().masonry('layout');
-        $("grid-item").show();
       },1000);
       break;
 
