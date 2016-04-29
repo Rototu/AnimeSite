@@ -68,11 +68,13 @@
       myButton = $('#b'+i);
       $mySlide.hide();
       $('#slide' + i).show();
-      $("grid-item").show();
       if(i==3) {
         $('#slide3').delay(1500).css('opacity', 1);
         s3 = true;
-        $grid.imagesLoaded().masonry('layout');
+        $("grid-item").show();
+        setTimeout(function() {
+          $grid.imagesLoaded().masonry('layout');
+        },1000);
       }
     });
   });
