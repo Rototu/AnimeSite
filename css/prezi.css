@@ -9,8 +9,8 @@
   height: 1.2vh;
   float: left;
   position: relative;
-  border-bottom: 2px solid white;
-  margin-bottom: -1px;
+  border-bottom: 2px solid rgba(0,0,0,0);
+  margin-bottom: 0;
 }
 
 #cContent{
@@ -35,7 +35,9 @@
 }
 
 #slide3{
-overflow-y: scroll;
+  overflow-y: scroll;
+  background-color: black;
+  color: white;
 }
 
 .genre{
@@ -68,8 +70,8 @@ overflow-y: scroll;
   transition: all 0.3s;
   z-index: 200;
   opacity: 0.4;
-  border-bottom: 2px solid white;
-  margin-bottom: -1px;
+  border-bottom: 2px solid rgba(0,0,0,0);
+  margin-bottom: 0;
 }
 
 .slide{
@@ -157,8 +159,8 @@ overflow-y: scroll;
   display: none;
   background: black;
   position: relative;
-  margin-left: 0;
-  width: 100% !important;
+  margin: 15px;
+  width: calc(100% - 30px) !important;
   border: solid black 1px;
 }
 
@@ -182,8 +184,8 @@ overflow-y: scroll;
 
 .grid-item {
   float: left;
-  opacity: 0.3;
-  transition: opacity 0.5s;
+  opacity: 0.4;
+  transition: opacity 0.1s;
   border: solid black 2px;
 }
 

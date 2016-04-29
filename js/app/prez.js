@@ -9,8 +9,7 @@
     itemSelector : '.grid-item',
     percentPosition : true,
     columnWidth : '.grid-sizer',
-    transitionDuration : '5s',
-    fitWidth : true,
+    transitionDuration : 0,
   });
   var s3 = false;
 
@@ -18,12 +17,14 @@
 
     $mySlide.show().hide();
     $(window).resize(function() {
-      $grid.masonry('layout');
-      s3 = true;
-      $grid.show().masonry('layout');
+      setTimeout(function() {
+        $grid.imagesLoaded().masonry('layout');
+        s3 = true;
+        $grid.imagesLoaded().show().masonry('layout');
+      },500);
     });
     window.myButton = 2;
-    $("#slide3").css('opacity', 0);
+    $("grid-item").show();
 
     $('.char').hide().fadeIn(2000);
     $('.arrows').hide().delay(2000).fadeIn(1000);
@@ -66,15 +67,13 @@
 
       $sidebarSection.css('opacity', 0.2);
       myButton = $('#b'+i);
+      $(window).trigger('resize');
       $mySlide.hide();
       $('#slide' + i).show();
       if(i==3) {
-        $('#slide3').delay(1500).css('opacity', 1);
         s3 = true;
-        $("grid-item").show();
-        setTimeout(function() {
-          $grid.imagesLoaded().masonry('layout');
-        },1000);
+        $grid.show().masonry('layout');
+        console.log('layout: done');
       }
     });
   });
@@ -108,12 +107,10 @@
 
       case 'b3':
       $mySlide.hide();
-      $('#slide3').show().css('opacity', 1);
+      $('#slide3').show();
       s3 = true;
-      $("grid-item").show();
-      setTimeout(function() {
-        $grid.imagesLoaded().masonry('layout');
-      },1000);
+      $grid.masonry('layout');
+      console.log('layout: done');
       break;
 
       case 'b4':
