@@ -1,0 +1,137 @@
+* {
+  box-sizing: border-box;
+}
+
+html{
+  overflow: hidden;
+}
+h1{
+  font-size: 1.9vw;
+}
+p{
+  font-size: 1.3vw;
+}
+body{
+  margin: 0;
+  background-color: white;
+  position: relative;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+#navbar{
+  background-color: black;
+  width: 100%;
+  height: 10vh;
+  position: relative;
+  z-index: 900;
+  border-bottom: 0px solid black;
+  margin-bottom: -1px;
+}
+
+#app{
+  width: 100%;
+  height: 90vh;
+  margin: 0;
+  position: relative;
+  z-index: 10;
+}
+
+#istoric{
+  width: 100vw;
+  height: 90vh;
+  position: relative;
+}
+
+#istoricContent{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  float: left;
+  background: black url("../img/anime/fundal.jpg") no-repeat;
+  background-size: cover;
+}
+
+#timeline-embed{
+  text-align: center;
+  background-color: white;
+  border: solid black 0.5vh;
+  width: calc(99.5vw - 6vh);
+  height: 84vh;
+  margin-top: 3vh;
+  margin-left: 3vh;
+  position: relative;
+}
+
+#timeline-embed img{
+  margin-top: calc(42vh - 100px);
+}
+
+#timeline-embed iframe{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#loader{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  z-index: 1000;
+  text-align: center;
+}
+
+#loadingGif{
+  display: none;
+  height: 25vh;
+  bottom: 10vh;
+  right: 5vw;
+  position: absolute;;
+  z-index: 100;
+}
+
+#Sinon{
+  display: none;
+  height: 35vh;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.menuButton{
+  background-color: white;
+  position: relative;
+  height: 9.4vh;
+  margin-top: 0.3vh;
+  transition: all 0.15s;
+  width: 20%;
+  float: left;
+  line-height: 9.4vh;
+  text-align: center;
+  font-size: 2vw;
+}
+
+.bh:hover{
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.6), 0 0 15px 0 rgba(0, 0, 0, 0.4);
+  /*background-color: black;
+  color: white;*/
+  z-index: 10;
+}
+
+.menuIcon{
+  position: relative;
+  height: 8vh;
+  margin-top: 0.7vh;
+}
+
+.noselect {
+  cursor: default;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* IE/Edge */
+  user-select: none;           /* non-prefixed version, currently
+  not supported by any browser */
+}

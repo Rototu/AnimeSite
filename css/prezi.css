@@ -1,0 +1,201 @@
+#category{
+  width: 100vw;
+  height: 90vh;
+  position: relative;
+}
+
+#cSidebar{
+  width: 100%;
+  height: 1.2vh;
+  float: left;
+  position: relative;
+  border-bottom: 2px solid white;
+  margin-bottom: -1px;
+}
+
+#cContent{
+  width: 100%;
+  height: 89vh;
+  background-color: white;
+  float: left;
+  position: relative;
+}
+
+#genres{
+  width: 100%;
+  height: 70vh;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+#slide2 h1{
+  margin-top: 7vh;
+  font-size: 2.8vw;
+}
+
+#slide3{
+overflow-y: scroll;
+}
+
+.genre{
+  width: 25%;
+  height: 100%;
+  float: left;
+  position: relative;
+  opacity: 0.4;
+  transition: all 0.5s;
+  border-bottom: 2px solid white;
+  margin-bottom: -1px;
+}
+
+.genre:hover{
+  opacity: 1;
+}
+
+.genreImg{
+  width: 98%;
+  margin-left: 1%;
+  position: relative;
+  margin-top: 0;
+}
+
+.sidebarSection{
+  float: left;
+  position: relative;
+  height: 1.2vh;
+  width: 20vw;
+  transition: all 0.3s;
+  z-index: 200;
+  opacity: 0.4;
+  border-bottom: 2px solid white;
+  margin-bottom: -1px;
+}
+
+.slide{
+  height: 89vh;
+  width: 100vw !important;
+  position: absolute;
+  z-index: 800;
+  right: 0;
+  background-color: white;
+  text-align: center;
+}
+
+.slide p{
+  text-align: justify;
+  text-align-last: center;
+  -moz-text-align-last: center;
+  margin: 20px auto;
+  width: 95vw;
+}
+
+.slideimg{
+  position: absolute;
+  height: 40vh;
+  bottom: 0;
+  width: 100vw;
+  left: 0;
+  text-align: center;
+}
+
+.slidetext{
+  width: 100%;
+  height: auto;
+  margin: auto 0;
+}
+
+.slideimg img{
+  height: 90%;
+  margin-top: 0;
+  border: solid black 3px;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.char{
+  /*height = 217px*/
+  display: none;
+  width: 300px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.arrows{
+  /*height = 300px*/
+  display: none;
+  width: 300px;
+  position: absolute;
+  bottom: 117px;
+  right: 250px;
+}
+
+.red{
+  background-color: red;
+}
+
+.blue{
+  background-color: blue;
+}
+
+.green{
+  background-color: green;
+}
+
+.orange{
+  background-color: orange;
+}
+
+.indigo{
+  background-color: indigo;
+}
+
+.grid {
+  display: none;
+  background: black;
+  position: relative;
+  margin-left: 0;
+  width: 100% !important;
+  border: solid black 1px;
+}
+
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.grid-sizer,
+.grid-item {
+  width: 10%;
+}
+
+.grid-item--width2{
+  width: 20%;
+}
+
+.grid-item--width3{
+  width: 40%;
+}
+
+.grid-item {
+  float: left;
+  opacity: 0.3;
+  transition: opacity 0.5s;
+  border: solid black 2px;
+}
+
+.grid-item:hover{
+  opacity: 1;
+}
+
+.grid-item img {
+  display: block;
+  width: 100%;
+}
+
+.gigante{
+  width: 40%;
+}
