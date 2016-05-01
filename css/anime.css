@@ -19,16 +19,25 @@
 #popclose{
   width: 20px;
   height: 20px;
-  background-color: black;
-  color: white;
+  color: rgb(15,15,15);
+  line-height: 20px;
+  font-size: 20px;
   position: relative;
   float: right;
-  transition: all 0.3s;
+  transition: all 0.1s;
 }
 
 #popclose:hover{
-  background-color: red;
+  background-color: rgb(15,15,15);
+  color: white;
   cursor: pointer;
+}
+
+#popcontent{
+   text-align: center;
+   width: 100%;
+   height: calc(90vh - 60px);
+   background: rgb(15,15,15);
 }
 
 .container  {
