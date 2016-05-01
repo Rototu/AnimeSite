@@ -199,8 +199,8 @@
 
 .grid-item {
   float: left;
-  opacity: 0.4;
-  transition: opacity 0.1s;
+  opacity: 0.3;
+  transition: opacity 1s;
   border: solid black 2px;
 }
 
