@@ -118,21 +118,23 @@
 }
 
 .char{
-  /*height = 217px*/
+  /*raport 1.38:1*/
   display: none;
-  width: 300px;
+  height: 40vh;
   position: absolute;
   bottom: 0;
   right: 0;
+  max-width: 50vw;
 }
 
 .arrows{
   /*height = 300px*/
   display: none;
-  width: 300px;
+  height: 40vh;
   position: absolute;
-  bottom: 117px;
-  right: 250px;
+  bottom: 18vh;
+  right: 41vh;
+  max-width: 50vw;
 }
 
 .red{
@@ -199,8 +201,8 @@
 
 .grid-item {
   float: left;
-  opacity: 0.3;
-  transition: opacity 1s;
+  opacity: 0.2;
+  transition: opacity 0.4s;
   border: solid black 2px;
 }
 

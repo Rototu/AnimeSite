@@ -26,8 +26,8 @@
     window.myButton = 2;
     $("grid-item").show();
 
-    $('.char').hide().fadeIn(2000);
-    $('.arrows').hide().delay(2000).fadeIn(1000);
+    $('.char').hide().fadeIn(1000);
+    $('.arrows').hide().delay(1000).fadeIn(1500);
 
     kPress = true;
     i=0;
@@ -37,12 +37,7 @@
     myButton = null;
 
     $(document).keydown(function(e) {
-
-      $('.char').hide();
-      $('.arrows').hide();
-
       switch(e.which) {
-
         case 37: // up
         if(i>1 && kPress) {
           i--;
@@ -60,20 +55,24 @@
         break;
 
         default: return; // exit this handler for other keys
-
       }
 
       e.preventDefault(); // prevent the default action (scroll / move caret)
 
-      $sidebarSection.css('opacity', 0.2);
-      myButton = $('#b'+i);
-      $(window).trigger('resize');
-      $mySlide.hide();
-      $('#slide' + i).show();
-      if(i==3) {
-        s3 = true;
-        $grid.show().masonry('layout');
-        console.log('layout: done');
+      if(i) {
+         $('.char').hide();
+         $('.arrows').hide();
+
+         $sidebarSection.css('opacity', 0.2);
+         myButton = $('#b'+i);
+         $(window).trigger('resize');
+         $mySlide.hide();
+         $('#slide' + i).show();
+         if(i==3) {
+           s3 = true;
+           $grid.show().masonry('layout');
+           console.log('layout: done');
+         }
       }
     });
   });
