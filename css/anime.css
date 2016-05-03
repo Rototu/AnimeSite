@@ -35,9 +35,19 @@
 
 #popcontent{
    text-align: center;
+   font-size: 1vw;
    width: 100%;
    height: calc(90vh - 60px);
    background: rgb(15,15,15);
+   color: white;
+   position: absolute;
+   top: 20px;
+}
+
+#popcontent p{
+   background: rgb(15,15,15);
+   color: white;
+   margin: 10px;
 }
 
 .container  {
