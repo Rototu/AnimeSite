@@ -1,10 +1,10 @@
 #popup{
   text-align: center;
-  height: calc(90vh - 40px);
-  width: calc(100vw - 40px);
+  height: 500px;
+  width: 500px;
   position: absolute;
-  margin-top: 20px;
-  margin-left: 20px;
+  margin-top: calc(45vh - 250px);
+  margin-left: calc(50vw - 250px);
   background-color: white;
   z-index: 900;
 }
@@ -35,9 +35,9 @@
 
 #popcontent{
    text-align: center;
-   font-size: 1vw;
+   font-size: 20px;
    width: 100%;
-   height: calc(90vh - 60px);
+   height: calc(500px - 20px);
    background: rgb(15,15,15);
    color: white;
    position: absolute;
@@ -50,6 +50,24 @@
    margin: 10px;
 }
 
+#popcontent a{
+   color: white;
+   text-decoration: none;
+   opacity: 0.5;
+   transition: opacity 0.5s;
+}
+
+#popcontent a:hover{
+   opacity: 1;
+}
+
+#popcontent li{
+   margin: 15px 0;
+   display: block;
+   width: 95%;
+   margin-left: 2.5%;
+}
+
 .container  {
   width: 100%;
   height: 90vh;
@@ -60,8 +78,8 @@
 }
 
 .background  {
-  top: -15vh;
-  left: -20vw;
+  top: -50px;
+  left: -15vw;
 }
 
 .layer div  {
@@ -69,9 +87,9 @@
 }
 
 .totoro {
-  opacity: 0.2;
-  top: 20vh;
-  left: -10vw;
+  opacity: 0.6;
+  top: 40vh;
+  left: -5vw;
   transition: all 1s;
 }
 
@@ -85,7 +103,7 @@
 }
 
 .snow{
-  opacity: 0.6;
+  opacity: 0.4;
   top: -2vh;
   left: -25vw;
 }
@@ -95,6 +113,16 @@
 }
 
 .sao {
-  top: 10vh;
-  left: 55vw;
+  top: 20vh;
+  left: 60vw;
+}
+
+.scarlet {
+  top: 55vh;
+  left: 15vw;
+}
+
+.fireflies {
+  top: 30vh;
+  left: 40vw;
 }
