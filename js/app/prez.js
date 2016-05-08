@@ -24,10 +24,10 @@
             s3 = true;
             $grid.imagesLoaded().show().masonry('layout');
          },500);
-         if(i==1) {
-            txtHeight = $('#txt1').height();
-            if(5*docHeight/20 - txtHeight/2 > 20) $('#txt1').css('margin-top', 5*docHeight/20 - txtHeight/2);
-         }
+         // if(i==1) {
+         //    txtHeight = $('#txt1').height();
+         //    if(5*docHeight/20 - txtHeight/2 > 20) $('#txt1').css('margin-top', 5*docHeight/20 - txtHeight/2);
+         // }
       });
       window.myButton = 2;
       $("grid-item").show();
@@ -74,10 +74,10 @@
             $(window).trigger('resize');
             $mySlide.hide();
             $('#slide' + i).show();
-            if(i==1) {
-               txtHeight = $('#txt1').height();
-               if(5*docHeight/20 - txtHeight/2 > 20) $('#txt1').css('margin-top', 5*docHeight/20 - txtHeight/2);
-            }
+            // if(i==1) {
+            //    txtHeight = $('#txt1').height();
+            //    if(5*docHeight/20 - txtHeight/2 > 20) $('#txt1').css('margin-top', 5*docHeight/20 - txtHeight/2);
+            // }
             if(i==3) {
                s3 = true;
                $grid.show().masonry('layout');
@@ -102,8 +102,8 @@
          case 'b1':
          $mySlide.hide();
          $('#slide1').show();
-         txtHeight = $('#txt1').height();
-         if(5*docHeight/20 - txtHeight/2 > 20) $('#txt1').css('margin-top', 5*docHeight/20 - txtHeight/2);
+         // txtHeight = $('#txt1').height();
+         // if(5*docHeight/20 - txtHeight/2 > 20) $('#txt1').css('margin-top', 5*docHeight/20 - txtHeight/2);
          // alert(txtHeight/2 + ' ' + 5*docHeight/20 + ' ' + ((5*docHeight/10) - (txtHeight)));
          break;
 
