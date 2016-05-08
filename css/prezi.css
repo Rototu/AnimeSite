@@ -102,9 +102,9 @@
 
 .slideimg{
    position: relative;
-   width: 95vw;
+   width: 98vw;
    text-align: center;
-   margin-left: 2.5vw;
+   margin-left: 1vw;
 }
 
 .slidetext{
@@ -124,7 +124,7 @@
 }
 
 .slideimg img{
-   width: 24%;
+   max-width: 24%;
    margin-top: 0;
    border: solid black 3px;
    margin-left: auto;
