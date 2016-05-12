@@ -256,7 +256,7 @@
 }
 
 #strip1 img{
-  max-height: 38vh;
+  height: 28vh;
 }
 
 #strip2, #strip3{
@@ -271,6 +271,10 @@
 
 #strip4{
   text-align: center;
+  height: 35vh;
+}
+
+#strip4 img{
   height: 35vh;
 }
 
