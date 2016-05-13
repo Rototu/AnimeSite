@@ -46,6 +46,11 @@
   color: white;
 }
 
+#slide3 h1{
+  font-size: 10vh;
+  line-height: 12vh;
+}
+
 .genre{
   width: 25%;
   height: 75vh;
@@ -114,7 +119,8 @@
 }
 
 .slidetext p{
-  font-size: 2.5vh;
+  font-size: 2.4vh;
+  line-height: 2.45vh;
   margin: 10px auto;
 }
 
