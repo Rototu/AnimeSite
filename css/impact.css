@@ -13,6 +13,7 @@
   float: left;
   opacity: 0.8;
   transition: all 0.3s;
+  overflow-y: auto;
 }
 
 #minus:hover, #plus:hover{
@@ -27,12 +28,26 @@
 #plus{
   background-color: white;
   border-left: solid black 0.1vw;
-  overflow-y: auto;
 }
 
 #plus h3{
   margin-bottom: 0;
   font-weight: 300;
+}
+
+#minus h2{
+  font-weight: 100;
+  font-size: 4.5vh;
+  margin: 5px auto;
+  display: block;
+}
+
+#minus p{
+  font-weight: 200;
+  font-size: 2.5vh;
+  margin: 5px 5%;
+  display: block;
+  width: 90%;
 }
 
 #impact h1{
