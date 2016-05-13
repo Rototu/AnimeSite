@@ -6,7 +6,7 @@
     $(window).trigger('resize');
     setTimeout(function() {
       var options = {
-        scale_factor: 1,
+        scale_factor: 0.5,
         timenav_height_percentage: 15,
         language: 'ro'
       };

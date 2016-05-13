@@ -12,7 +12,7 @@
     "background-color" : "black",
     "color" : "red"
   });
-  
+
   $("#totoro").click(function() {
     $popup.fadeIn(1000);
   });
