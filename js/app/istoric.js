@@ -1,5 +1,6 @@
 (function(){
    $("#istoricButton").click(function() {
+      $("#audio").prop("volume", 0);
       window.myButton = 3;
       $(".slide").hide();
       $("#istoric").show();

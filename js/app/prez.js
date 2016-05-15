@@ -17,6 +17,8 @@
 
    $('#cButton').click(function() {
 
+      $("#audio").prop("volume", 0.002);
+
       $mySlide.show().hide();
       $(window).resize(function() {
          setTimeout(function() {

@@ -26,9 +26,7 @@
 </head>
 
 <body>
-   <audio id="audio" preload="none">
-      <source id="aSrc" src="music/001.mp3" type="audio/mpeg" />
-   </audio>
+
    <div id="loader">
       <img src="img/anime/loadingSin.gif" id="loadingGif"/>
       <img src="img/anime/Sinon.png" id="Sinon"/>
@@ -111,6 +109,9 @@
                      Imagini şi GIF-uri din timpul producţiei anime-urilor
                   </a>
                </li>
+               <audio id="audio" preload="none" controls="controls" style="width: 500px;">
+                  <source id="aSrc" src="music/01.mp3" type="audio/mpeg" />
+               </audio>
             </div>
          </div>
          <ul id="scene" class="scene">
@@ -131,7 +132,8 @@
             </li>
 
             <li class="layer" data-depth="0.60">
-               <div class="forest"><img id="forest" src="img/anime/forest1.png" style="width: 130vw;"></div>
+               <div class="forest">
+                  <img id="forest" src="img/anime/forest1.png" style="width: 130vw;"></div>
             </li>
 
             <li class="layer" data-depth="0.70">
@@ -670,7 +672,7 @@
       <div id="impact" class="screen">
          <div id="minus">
             <h1>SOCIETATE</h1>
-
+            <hr>
             <h2>+</h2>
             <p>
                Cel mai mare impact pozitiv al anime-urilor se resimte chiar în țara lor de origine.
@@ -729,7 +731,7 @@
                momentul în care ar ajunge acasă ca să poată intra din nou în acea lumea deluzorie. Astfel a luat naștere un curent întreg de persoane
                care se identifică ca și "Otaku", termen folosit pentru a caracteriza tinerii care devin obsedați sau chiar dependenți de anime-uri. Dacă
                în occident termenul are o conotație mai blândă, în Japonia sunt criticate dur acest tip de persoane.
-               <br/><br/>
+               <br/><br/><hr><br/><br/>
             </p>
 
          </div>
@@ -771,7 +773,6 @@
 
          </div>
       </div>
-
 
    </section>
    <script src="js/vendor/jquery.parallax.js"></script>

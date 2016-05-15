@@ -2,12 +2,40 @@ var mediaOn;
 var $loader = $("#loader");
 var $forest = $(".forest");
 var $audio = $("#audio");
+var $mySrc = $("#aSrc");
 
 $('img').on('dragstart', function(event) { event.preventDefault(); });
-$audio.prop("volume", 0.002);
+
+var track = 1;
+$audio.prop("volume", 0.003);
 $audio.trigger("load").trigger("play");
 $audio.on("ended", function(){
-   $("#aSrc").prop("src", "music/002.mp3");
+   track++;
+   switch (track) {
+      case 1:
+      $mySrc.prop("src", "music/01.mp3");
+      break;
+      case 2:
+      $mySrc.prop("src", "music/02.mp3");
+      break;
+      case 3:
+      $mySrc.prop("src", "music/03.mp3");
+      break;
+      case 4:
+      $mySrc.prop("src", "music/04.mp3");
+      break;
+      case 5:
+      $mySrc.prop("src", "music/05.mp3");
+      break;
+      case 6:
+      $mySrc.prop("src", "music/06.mp3");
+      break;
+      case 7:
+      $mySrc.prop("src", "music/07.mp3");
+      track=0;
+      break;
+      default:
+   }
    $audio.load().prop("currentTime",0).trigger("play");
 });
 
