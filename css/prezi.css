@@ -34,6 +34,8 @@
 
 #slide1{
    overflow-y: auto;
+   background-color: white;
+   color: black;
 }
 
 #slide2 h1{
@@ -57,7 +59,7 @@
    height: 75vh;
    float: left;
    position: relative;
-   opacity: 0.4;
+   opacity: 0.2;
    transition: all 0.5s;
    border-bottom: 2px solid white;
    margin-bottom: -1px;
@@ -94,16 +96,18 @@
    position: absolute;
    z-index: 800;
    right: 0;
-   background-color: white;
+   background-color: black;
    text-align: center;
+   color: white;
 }
 
 .slide p{
    text-align: justify;
    text-align-last: center;
    -moz-text-align-last: center;
-   margin: 20px auto;
+   margin: 20px auto 20px auto;
    width: 95vw;
+   font-weight: 300;
 }
 
 .slideimg{
@@ -122,7 +126,7 @@
 .slidetext p{
    font-size: 2.4vh;
    line-height: 2.45vh;
-   margin: 10px auto;
+   margin: 20px auto;
 }
 
 .slidetext h1{
@@ -245,9 +249,9 @@
 #slide4{
    /*background: url("../img/anime/fundal.jpg") no-repeat;
    background-size: cover;*/
-   background-color: white;
+   background-color: black;
    background-blend-mode: darken;
-   color: black;
+   color: white;
    overflow: auto;
 }
 
@@ -259,11 +263,17 @@
 
 .imgStrip img{
    max-height: 100%;
-   border: solid black 2px;
+   border: solid rgba(0,0,0,0) 2px;
+   opacity: 0.2;
+   transition: all 0.6s;
+}
+
+.imgStrip img:hover{
+   opacity: 1;
 }
 
 #strip1 img{
-   height: 28vh;
+   width: 32%;
 }
 
 #strip2, #strip3{
@@ -272,17 +282,7 @@
 }
 
 #strip2 img, #strip3 img{
-   max-width: calc(40% - 4px);
-   max-height: 85vh;
-}
-
-#strip4{
-   text-align: center;
-   height: 35vh;
-}
-
-#strip4 img{
-   height: 35vh;
+   width: 48%;
 }
 
 #strip5{
@@ -290,12 +290,15 @@
 
 #slide4 h1{
    font-size: 3vw;
-   margin: 40px auto;
+   margin: 40px auto 10px auto;
 }
 
 .gifGif{
-   max-width: 40%;
-   max-height: 32vh !important;
+   height: 80vh;
+}
+
+.gifGif1{
+   height: 39.5vh;
 }
 
 #slide5{
