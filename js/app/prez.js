@@ -90,7 +90,7 @@
    $sidebarSection.hover(function() {
       $(this).css('opacity', 1);
    }, function() {
-      $(this).css('opacity', 0.4);
+      $(this).css('opacity', 0.2);
    });
 
    $sidebarSection.click(function(event) {
