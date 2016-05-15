@@ -4,14 +4,14 @@ var $forest = $(".forest");
 var $audio = $("#audio");
 
 $('img').on('dragstart', function(event) { event.preventDefault(); });
+$audio.prop("volume", 0.002);
+$audio.trigger("load").trigger("play");
+$audio.on("ended", function(){
+   $("#aSrc").prop("src", "music/002.mp3");
+   $audio.load().prop("currentTime",0).trigger("play");
+});
 
 $(window).load(function() {
-   $audio.prop("volume", 0.002);
-   $audio.trigger("load").trigger("play");
-   $audio.on("ended", function(){
-      $("#aSrc").prop("src", "music/002.mp3");
-      $audio.load().prop("currentTime",0).trigger("play");
-   });
    window.mediaOn = mediaOn;
    window.myButton = 1;
    console.log("Loaded");
