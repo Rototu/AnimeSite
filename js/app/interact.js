@@ -1,6 +1,6 @@
 (function(){
    $("#mediaButton").click(function() {
-      $("#audio").prop("volume", 0.004);
+      $("#audio").prop("muted", false).prop("volume", 0.003);
       window.myButton = 5;
       var galWidth;
       var $gallery = $("#gallery");

@@ -7,7 +7,7 @@ var $mySrc = $("#aSrc");
 $('img').on('dragstart', function(event) { event.preventDefault(); });
 
 var track = 1;
-$audio.prop("volume", 0.003);
+$audio.prop("volume", 0.03);
 $audio.trigger("load").trigger("play");
 $audio.on("ended", function(){
    track++;
@@ -38,8 +38,22 @@ $audio.on("ended", function(){
    }
    $audio.load().prop("currentTime",0).trigger("play");
 });
+$audio.on('volumechange', function(){
+   window.vol=$audio.prop('volume');
+});
 
 $(window).load(function() {
+   var vol = $audio.prop("volume");
+   window.vol = vol;
+   var soundTimer = setInterval(function(){
+      vol = $audio.prop("volume");
+      if(vol<0.005) clearInterval(soundTimer);
+      else {
+         vol -= 0.0005;
+         vol = $audio.prop("volume", vol);
+         window.vol = vol;
+      }
+   }, 100)
    window.mediaOn = mediaOn;
    window.myButton = 1;
    console.log("Loaded");

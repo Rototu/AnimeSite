@@ -16,8 +16,7 @@
    var docHeight = $(window).height();
 
    $('#cButton').click(function() {
-
-      $("#audio").prop("volume", 0.002);
+      $("#audio").prop("muted", false).prop("volume", 0.001);
 
       $mySlide.show().hide();
       $(window).resize(function() {

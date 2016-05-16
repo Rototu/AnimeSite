@@ -29,7 +29,8 @@
    });
 
    $("#logo").click(function() {
-      $("#audio").prop("volume", 0.003);
+      $("#audio").prop("muted", false).prop("volume", 0.01);
+
       window.myButton = 1;
       setTimeout(function() {
          $(".container").show();
