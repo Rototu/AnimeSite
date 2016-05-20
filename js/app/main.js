@@ -76,22 +76,23 @@ var AppModule = (function () {
 
           case 7:
           this.$mySrc.prop("src", "music/07.mp3");
-          this.track=0;
+          track=0;
           break;
 
           //debug
           default:
           console.log("track " + this.track + " is not in the playlist");
+          console.log(this);
           break;
 
         }
         this.$audio.load().prop("currentTime",0).trigger("play");
-      });
+      }.bind(this));
 
       //set global volume variable on change
       this.$audio.on('volumechange', function(){
         if(window.myButton == 1) window.vol = this.volume;
-      }).bind(this);
+      });
 
       //loader fadeOut
       this.$forest.show();
