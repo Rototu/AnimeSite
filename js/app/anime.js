@@ -29,7 +29,7 @@
    });
 
    $("#logo").click(function() {
-      $("#audio").prop("muted", false).prop("volume", 0.01);
+      $("#audio").prop("muted", false).prop("volume", window.vol);
 
       window.myButton = 1;
       setTimeout(function() {

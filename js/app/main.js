@@ -7,7 +7,7 @@ var $mySrc = $("#aSrc");
 $('img').on('dragstart', function(event) { event.preventDefault(); });
 
 var track = 1;
-$audio.prop("volume", 0.03);
+$audio.prop("volume", 0.3);
 $audio.trigger("load").trigger("play");
 $audio.on("ended", function(){
    track++;
@@ -39,7 +39,7 @@ $audio.on("ended", function(){
    $audio.load().prop("currentTime",0).trigger("play");
 });
 $audio.on('volumechange', function(){
-   window.vol=$audio.prop('volume');
+   if(window.myButton == 1) window.vol=$audio.prop('volume');
 });
 
 $(window).load(function() {
@@ -47,13 +47,13 @@ $(window).load(function() {
    window.vol = vol;
    var soundTimer = setInterval(function(){
       vol = $audio.prop("volume");
-      if(vol<0.005) clearInterval(soundTimer);
+      if(vol<0.1) clearInterval(soundTimer);
       else {
          vol -= 0.0005;
          vol = $audio.prop("volume", vol);
          window.vol = vol;
       }
-   }, 100)
+   }, 10)
    window.mediaOn = mediaOn;
    window.myButton = 1;
    console.log("Loaded");
@@ -69,10 +69,10 @@ $(window).load(function() {
 });
 
 // sterge urmatoarea functie!!!
-$loader.click(function() {
-   $loader.hide();
-   $forest.show();
-   var fHeight = $(".forest").height();
-   var wHeight = $(document).height()*9/10;
-   $(".forest").css("top", wHeight-fHeight);
-});
+// $loader.click(function() {
+//    $loader.hide();
+//    $forest.show();
+//    var fHeight = $(".forest").height();
+//    var wHeight = $(document).height()*9/10;
+//    $(".forest").css("top", wHeight-fHeight);
+// });
