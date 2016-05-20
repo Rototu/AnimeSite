@@ -123,5 +123,5 @@ window.displayLoadingScreen = function() {
   $("#loadingGif").fadeIn(3000);
   $(".screen").hide();
   $(".container").show();
-  $("#scene").parallax();
+  $("#scene").parallax('enable');
 }

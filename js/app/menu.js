@@ -73,8 +73,9 @@ var MenuModule = (function () {
         "box-shadow" : "none"
       });
 
-      //I think this has no use, but why remove it, I can boast that I've written one more line of code :p
+      //disabling heavy js
       window.mediaOn = false;
+      $("#scene").parallax('disable');
 
       //change CSS of selected button
       console.log(window.myButton);
@@ -90,6 +91,7 @@ var MenuModule = (function () {
         var fHeight = $(".forest").height();
         var wHeight = $(document).height();
         this.$forest.css("top", wHeight-fHeight);
+        $("#scene").parallax('enable');
         break;
 
         case 2:
