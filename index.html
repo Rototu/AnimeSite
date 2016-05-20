@@ -56,7 +56,7 @@
 
   <section id="app">
 
-    <div class="container noselect screen">
+    <div class="container noselect screen" id="myParallax">
       <div id="popup">
         <div id="popmenu">
           <div id="popclose">
@@ -774,18 +774,25 @@
       </div>
 
     </section>
+
+    <!--  vendor scripts -->
     <script src="js/vendor/jquery.parallax.js"></script>
     <script src="js/vendor/jquery.motio.min.js"></script>
     <script src="js/vendor/masonry.pkgd.min.js"></script>
     <script src="js/vendor/imagesloaded.pkgd.min.js"></script>
-    <!-- <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script> -->
+
+    <!-- page scripts  -->
     <script src="js/app/main.js"></script>
     <script src="js/app/anime.js"></script>
     <script src="js/app/menu.js"></script>
     <script src="js/app/istoric.js"></script>
     <script src="js/app/prez.js"></script>
-    <script src="js/app/media.js"></script>
+    <script src="js/app/impact.js"></script>
     <script src="js/app/interact.js"></script>
+
+    <script>
+    window.displayLoadingScreen();
+    </script>
 
   </body>
   </html>

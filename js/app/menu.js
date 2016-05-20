@@ -1,117 +1,145 @@
-(function(){
-   var clicked = 1;
-   var iClick = false;
-   var $menuButton = $(".menuButton");
-   var $logo = $("#logo");
-   var $cButton = $("#cButton");
-   var $istoricButton = $("#istoricButton");
-   var $importanceButton = $("#importanceButton");
-   var $mediaButton = $("#mediaButton");
+var MenuModule = (function () {
+  // you know what this is...
+  return {
 
-   $(document).on('click', 'a', function(e){
-      e.preventDefault();
-      var url = $(this).attr('href');
-      window.open(url, '_blank');
-   });
+    init: function () {
+      this.$menuButton = $(".menuButton");
+      this.$logo = $("#logo");
+      this.$cButton = $("#cButton");
+      this.$istoricButton = $("#istoricButton");
+      this.$importanceButton = $("#importanceButton");
+      this.$mediaButton = $("#mediaButton");
+      this.$forest = $('.forest');
+    },
 
-   $menuButton.on({
-      mouseenter: function () {
-         var $myThis = $(this);
-         var myColor = $myThis.css("color");
-         if(myColor != "rgb(255, 0, 0)") {
+    bindHandlers: function () {
+      window.MenuModule.changeSelectedButton();
+
+      //open links in new tab
+      $(document).on('click', 'a', function(e){
+        e.preventDefault();
+        var url = $(this).attr('href');
+        window.open(url, '_blank');
+      });
+
+      //menu button events
+      this.$menuButton.on({
+
+        //on hover change css
+        mouseenter: function () {
+          var $myThis = $(this);
+          var myColor = $myThis.css("color");
+          if(myColor != "rgb(255, 0, 0)") {
             $myThis.css({
-               "background-color" : "black",
-               "color" : "white",
-               "z-index" : "10",
-               "box-shadow" : "0 0 8px 0 rgba(0, 0, 0, 0.6), 0 0 15px 0 rgba(0, 0, 0, 0.4)"
+              "background-color" : "black",
+              "color" : "white",
+              "z-index" : "10",
+              "box-shadow" : "0 0 8px 0 rgba(0, 0, 0, 0.6), 0 0 15px 0 rgba(0, 0, 0, 0.4)"
             });
-         }
-      },
-      click: function () {
-         setTimeout(function() {
-            iClick = true;
-         }, 10);
-         $(".screen").hide();
-         $(window).trigger('resize');
-         $menuButton.css({
-            "background-color" : "white",
-            "color" : "black",
-            "z-index" : "1",
-            "box-shadow" : "none"
-         });
-         window.mediaOn = false;
-      },
-      mouseleave: function () {
-         var $myThis = $(this);
-         var myColor = $myThis.css("color");
-         if(myColor != "rgb(255, 0, 0)") {
+          }
+        },
+
+        //if not hovered reset css
+        mouseleave: function () {
+          var $myThis = $(this);
+          var myColor = $myThis.css("color");
+          if(myColor != "rgb(255, 0, 0)") {
             $myThis.css({
-               "background-color" : "white",
-               "color" : "black",
-               "z-index" : "1",
-               "box-shadow" : "none"
+              "background-color" : "white",
+              "color" : "black",
+              "z-index" : "1",
+              "box-shadow" : "none"
             });
-         }
+          }
+          MenuModule.changeSelectedButton();
+        }
+      });
+
+    },
+
+    changeSelectedButton: function (value) {
+      //hide pages
+      $(".screen").hide();
+      console.log('screen class hidden');
+
+      //assurance for further objects position
+      $(window).trigger('resize');
+
+      //reset css for all menu buttons
+      this.$menuButton.css({
+        "background-color" : "white",
+        "color" : "black",
+        "z-index" : "1",
+        "box-shadow" : "none"
+      });
+
+      //I think this has no use, but why remove it, I can boast that I've written one more line of code :p
+      window.mediaOn = false;
+
+      //change CSS of selected button
+      console.log(window.myButton);
+      switch (window.myButton) {
+        case 1:
+        this.$logo.css({
+          "background-color" : "black",
+          "color" : "red",
+          "z-index" : "10",
+          "box-shadow" : "0 0 8px 0 rgba(0, 0, 0, 0.6), 0 0 15px 0 rgba(0, 0, 0, 0.4)"
+        });
+        $("#myParallax").show();
+        var fHeight = $(".forest").height();
+        var wHeight = $(document).height();
+        this.$forest.css("top", wHeight-fHeight);
+        break;
+
+        case 2:
+        this.$cButton.css({
+          "background-color" : "black",
+          "color" : "red",
+          "z-index" : "10",
+          "box-shadow" : "0 0 8px 0 rgba(0, 0, 0, 0.6), 0 0 15px 0 rgba(0, 0, 0, 0.4)"
+        });
+        $('#category').show();
+        break;
+
+        case 3:
+        this.$istoricButton.css({
+          "background-color" : "black",
+          "color" : "red",
+          "z-index" : "10",
+          "box-shadow" : "0 0 8px 0 rgba(0, 0, 0, 0.6), 0 0 15px 0 rgba(0, 0, 0, 0.4)"
+        });
+        $("#istoric").show();
+        break;
+
+        case 4:
+        this.$importanceButton.css({
+          "background-color" : "black",
+          "color" : "red",
+          "z-index" : "10",
+          "box-shadow" : "0 0 8px 0 rgba(0, 0, 0, 0.6), 0 0 15px 0 rgba(0, 0, 0, 0.4)"
+        });
+        $("#impact").show();
+        break;
+
+        case 5:
+        this.$mediaButton.css({
+          "background-color" : "black",
+          "color" : "red",
+          "z-index" : "10",
+          "box-shadow" : "0 0 8px 0 rgba(0, 0, 0, 0.6), 0 0 15px 0 rgba(0, 0, 0, 0.4)"
+        });
+        $("#media").show();
+        break;
+
+        default: return;
       }
-   });
+    }
+  };
+})();
 
-   setInterval(function() {
-      // if(clicked != window.myButton || iClick){
-      if(iClick){
-         // clicked = window.myButton;
-         iClick = false;
-         // $(".menuButton").css("color", "black");
-         // $(".menuButton").css("box-shadow", "none");
-         // $(".menuButton").css("z-index", "1");
-         // $(".menuButton").css("background-color", "white");
-         switch (window.myButton) {
-            case 1:
-            $logo.css({
-               "background-color" : "black",
-               "color" : "red",
-               "z-index" : "10",
-               "box-shadow" : "0 0 8px 0 rgba(0, 0, 0, 0.6), 0 0 15px 0 rgba(0, 0, 0, 0.4)"
-            });
-            break;
-
-            case 2:
-            $cButton.css({
-               "background-color" : "black",
-               "color" : "red",
-               "z-index" : "10",
-               "box-shadow" : "0 0 8px 0 rgba(0, 0, 0, 0.6), 0 0 15px 0 rgba(0, 0, 0, 0.4)"
-            });
-            break;
-
-            case 3:
-            $istoricButton.css({
-               "background-color" : "black",
-               "color" : "red",
-               "z-index" : "10",
-               "box-shadow" : "0 0 8px 0 rgba(0, 0, 0, 0.6), 0 0 15px 0 rgba(0, 0, 0, 0.4)"
-            });
-            break;
-
-            case 4:
-            $importanceButton.css({
-               "background-color" : "black",
-               "color" : "red",
-               "z-index" : "10",
-               "box-shadow" : "0 0 8px 0 rgba(0, 0, 0, 0.6), 0 0 15px 0 rgba(0, 0, 0, 0.4)"
-            });
-            break;
-
-            case 5:
-            $mediaButton.css({
-               "background-color" : "black",
-               "color" : "red",
-               "z-index" : "10",
-               "box-shadow" : "0 0 8px 0 rgba(0, 0, 0, 0.6), 0 0 15px 0 rgba(0, 0, 0, 0.4)"
-            });
-            break;
-
-            default: return;
-         }
-      }
-   }, 100);
-}());
+$(document).on("ready", function () {
+  MenuModule.init();
+  MenuModule.bindHandlers();
+  window.MenuModule = MenuModule;
+});

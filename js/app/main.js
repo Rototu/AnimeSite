@@ -10,6 +10,11 @@ var AppModule = (function () {
       //parallax vars
       this.$loader = $("#loader");
       this.$forest = $(".forest");
+      this.$popup = $("#popup");
+      window.myButton = 1;
+      window.mediaOn = false;
+      this.$forest.hide();
+      this.$popup.hide();
 
       //audio vars
       this.$audio = $("#audio");
@@ -37,11 +42,6 @@ var AppModule = (function () {
           window.vol = this.vol;
         }
       }.bind(this), 10);
-
-      //parallax init
-      window.myButton = 1;
-      window.mediaOn = false;
-      this.$forest.hide();
 
       //prevent image drag
       $('img').on('dragstart', function(event) { event.preventDefault(); });
@@ -83,7 +83,7 @@ var AppModule = (function () {
           default:
           console.log("track " + this.track + " is not in the playlist");
           console.log(this);
-          break;
+          return;
 
         }
         this.$audio.load().prop("currentTime",0).trigger("play");
@@ -94,6 +94,10 @@ var AppModule = (function () {
         if(window.myButton == 1) window.vol = this.volume;
       });
 
+    },
+
+    loaded: function () {
+
       //loader fadeOut
       this.$forest.show();
       var fHeight = this.$forest.height();
@@ -102,12 +106,22 @@ var AppModule = (function () {
       setTimeout(function() {
         this.$loader.fadeOut(1000);
       }.bind(this), 3000);
+
     }
   };
 
 })();
 
-$(document).on("ready", function() {
+$(document).on("ready", function () {
   AppModule.init();
   AppModule.bindHandlers();
+  AppModule.loaded();
 });
+
+window.displayLoadingScreen = function() {
+  $("#Sinon").fadeIn(3000);
+  $("#loadingGif").fadeIn(3000);
+  $(".screen").hide();
+  $(".container").show();
+  $("#scene").parallax();
+}
