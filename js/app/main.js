@@ -1,78 +1,112 @@
-var mediaOn;
-var $loader = $("#loader");
-var $forest = $(".forest");
-var $audio = $("#audio");
-var $mySrc = $("#aSrc");
+var AppModule = (function () {
+  //important Vars
+  var myDocument = $(document);
 
-$('img').on('dragstart', function(event) { event.preventDefault(); });
+  //no need to comment this
+  return {
+    init: function () {
+      console.log("Loaded");
 
-var track = 1;
-$audio.prop("volume", 0.3);
-$audio.trigger("load").trigger("play");
-$audio.on("ended", function(){
-   track++;
-   switch (track) {
-      case 1:
-      $mySrc.prop("src", "music/01.mp3");
-      break;
-      case 2:
-      $mySrc.prop("src", "music/02.mp3");
-      break;
-      case 3:
-      $mySrc.prop("src", "music/03.mp3");
-      break;
-      case 4:
-      $mySrc.prop("src", "music/04.mp3");
-      break;
-      case 5:
-      $mySrc.prop("src", "music/05.mp3");
-      break;
-      case 6:
-      $mySrc.prop("src", "music/06.mp3");
-      break;
-      case 7:
-      $mySrc.prop("src", "music/07.mp3");
-      track=0;
-      break;
-      default:
-   }
-   $audio.load().prop("currentTime",0).trigger("play");
+      //parallax vars
+      this.$loader = $("#loader");
+      this.$forest = $(".forest");
+
+      //audio vars
+      this.$audio = $("#audio");
+      this.$mySrc = $("#aSrc");
+      this.track=1;
+    },
+
+    bindHandlers: function () {
+      //audio init
+      this.$audio.prop("volume", 0.1);
+      this.$audio.trigger("load").trigger("play");
+      this.vol = this.$audio.prop("volume");
+
+      //audio autoControl
+      console.log("Starting volume decrease");
+      this.soundTimer = setInterval(function(){
+        this.vol = this.$audio.prop("volume");
+        if(this.vol<0.015) {
+          console.log("Finished volume decrease");
+          clearInterval(this.soundTimer);
+        }
+        else {
+          this.vol -= 0.0005;
+          this.$audio.prop("volume", this.vol);
+          window.vol = this.vol;
+        }
+      }.bind(this), 10);
+
+      //parallax init
+      window.myButton = 1;
+      window.mediaOn = false;
+      this.$forest.hide();
+
+      //prevent image drag
+      $('img').on('dragstart', function(event) { event.preventDefault(); });
+      //switch to next track in playlist on track 'ended' event
+      this.$audio.on("ended", function(){
+        this.track++;
+        switch (this.track) {
+
+          case 1:
+          this.$mySrc.prop("src", "music/01.mp3");
+          break;
+
+          case 2:
+          this.$mySrc.prop("src", "music/02.mp3");
+          break;
+
+          case 3:
+          this.$mySrc.prop("src", "music/03.mp3");
+          break;
+
+          case 4:
+          this.$mySrc.prop("src", "music/04.mp3");
+          break;
+
+          case 5:
+          this.$mySrc.prop("src", "music/05.mp3");
+          break;
+
+          case 6:
+          this.$mySrc.prop("src", "music/06.mp3");
+          break;
+
+          case 7:
+          this.$mySrc.prop("src", "music/07.mp3");
+          this.track=0;
+          break;
+
+          //debug
+          default:
+          console.log("track " + this.track + " is not in the playlist");
+          break;
+
+        }
+        this.$audio.load().prop("currentTime",0).trigger("play");
+      });
+
+      //set global volume variable on change
+      this.$audio.on('volumechange', function(){
+        if(window.myButton == 1) window.vol = this.volume;
+      }).bind(this);
+
+      //loader fadeOut
+      this.$forest.show();
+      var fHeight = this.$forest.height();
+      var wHeight = myDocument.height()*9/10;
+      this.$forest.css("top", wHeight-fHeight);
+      setTimeout(function() {
+        this.$loader.fadeOut(1000);
+      }.bind(this), 3000);
+    }
+  };
+
+})();
+
+$(document).on("ready", function() {
+  AppModule.init();
+  AppModule.bindHandlers();
 });
-$audio.on('volumechange', function(){
-   if(window.myButton == 1) window.vol=$audio.prop('volume');
-});
-
-$(window).load(function() {
-   var vol = $audio.prop("volume");
-   window.vol = vol;
-   var soundTimer = setInterval(function(){
-      vol = $audio.prop("volume");
-      if(vol<0.1) clearInterval(soundTimer);
-      else {
-         vol -= 0.0005;
-         vol = $audio.prop("volume", vol);
-         window.vol = vol;
-      }
-   }, 10)
-   window.mediaOn = mediaOn;
-   window.myButton = 1;
-   console.log("Loaded");
-   window.mediaOn = false;
-   $forest.hide();
-   setTimeout(function() {
-      $forest.show();
-      var fHeight = $(".forest").height();
-      var wHeight = $(document).height()*9/10;
-      $(".forest").css("top", wHeight-fHeight);
-      $loader.fadeOut(500);
-   },3000);
-});
-
-// sterge urmatoarea functie!!!
-// $loader.click(function() {
-//    $loader.hide();
-//    $forest.show();
-//    var fHeight = $(".forest").height();
-//    var wHeight = $(document).height()*9/10;
-//    $(".forest").css("top", wHeight-fHeight);
-// });
