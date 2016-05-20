@@ -19,7 +19,7 @@ var AppModule = (function () {
 
     bindHandlers: function () {
       //audio init
-      this.$audio.prop("volume", 0.1);
+      this.$audio.prop("volume", 0.05);
       this.$audio.trigger("load").trigger("play");
       this.vol = this.$audio.prop("volume");
 
@@ -27,12 +27,12 @@ var AppModule = (function () {
       console.log("Starting volume decrease");
       this.soundTimer = setInterval(function(){
         this.vol = this.$audio.prop("volume");
-        if(this.vol<0.015) {
+        if(this.vol<0.01) {
           console.log("Finished volume decrease");
           clearInterval(this.soundTimer);
         }
         else {
-          this.vol -= 0.0005;
+          this.vol -= 0.0001;
           this.$audio.prop("volume", this.vol);
           window.vol = this.vol;
         }
