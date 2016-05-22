@@ -33,6 +33,7 @@ var InteractiveModule = (function () {
             //store name
             this.name =  this.$name.val();
             console.log(this.name);
+            $(".myCharName").text(this.name);
 
             //change to scene 2
             InteractiveModule.frame2();
@@ -72,10 +73,10 @@ var InteractiveModule = (function () {
 
       frame2: function () {
          //animation frame 2
-         $("#frame1").hide("slide", {direction:"left"}, 1000, function () {
-            $("#frame2").show(function () {
-               
-            });
+         $("#frame1").hide("slide", {direction:"left"});
+         $("#frame2").show("slide", {direction:"right"}, function () {
+            $("#charChoice").delay(1000).fadeIn(5000);
+            $("#frame2One").fadeIn(2000);
          });
       }
    }
