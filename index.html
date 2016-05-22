@@ -163,17 +163,24 @@
          <div id="media" class="screen">
 
             <div id="game">
-               <div class="gameSlide" id="frame1">
-                  <img src="img/game/korosensei.png" id="korosensei"/>
-                  <h1 id="frame1One"> Uite, avem un vizitator nou! </h1>
-                  <h1 id="frame1Two"> Hmmm, ce-mi spui despre tine? </h1>
-                  <form id="frame1Form">
+               <div class="gameSlide gameElement" id="frame1">
+                  <img class="gameElement" id="korosensei" src="img/game/korosensei.png"/>
+                  <h1 class="gameElement" id="frame1One"> Uite, avem un vizitator! </h1>
+                  <h1 class="gameElement" id="frame1Two"> Ce nume vrei să ai în joc? </h1>
+                  <form class="gameElement" id="frame1Form">
                      <p>
                         NUME:
-                        <input type="text"/>
+                        <input id="name" type="text"/>
                      </p>
+                     <div class="gameElement" id="nameSubmit">
+                        CONTINUĂ
+                     </div>
                   </form>
                </div>
+               <div class="gameSlide gameElement" id="frame2">
+                  
+               </div>
+
             </div>
 
          </div>
