@@ -10,11 +10,10 @@ var MenuModule = (function () {
          this.$importanceButton = $("#importanceButton");
          this.$mediaButton = $("#mediaButton");
          this.$forest = $('.forest');
+         window.myButton = 1;
       },
 
       bindHandlers: function () {
-         window.MenuModule.changeSelectedButton();
-
          //open links in new tab
          $(document).on('click', 'a', function(e){
             e.preventDefault();

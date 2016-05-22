@@ -11,9 +11,7 @@ var AppModule = (function () {
          this.$loader = $("#loader");
          this.$forest = $(".forest");
          this.$popup = $("#popup");
-         window.myButton = 1;
          window.mediaOn = false;
-         this.$forest.hide();
          this.$popup.hide();
 
          //audio vars
@@ -104,6 +102,7 @@ var AppModule = (function () {
          var wHeight = myDocument.height()*9/10;
          this.$forest.css("top", wHeight-fHeight);
          setTimeout(function() {
+            window.MenuModule.changeSelectedButton();
             this.$loader.fadeOut(1000);
          }.bind(this), 3000);
 

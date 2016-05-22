@@ -16,9 +16,7 @@ var AnimeParallaxModule = (function () {
 
          //change css on resize
          $(window).on('resize', function() {
-            var fHeight = $(".forest").height();
-            var wHeight = $(document).height();
-            this.$forest.css("top", wHeight-fHeight);
+            AnimeParallaxModule.forestUpdate();
          }.bind(this));
 
          //main page controll
@@ -27,7 +25,15 @@ var AnimeParallaxModule = (function () {
             window.MenuModule.changeSelectedButton();
             console.log("container class displayed");
             $("#audio").prop("muted", false).prop("volume", window.vol);
+            AnimeParallaxModule.forestUpdate();
          });
+      },
+
+      forestUpdate: function () {
+         console.log("forest updated");
+         var fHeight = $(".forest").height();
+         var wHeight = $(document).height();
+         this.$forest.css("top", wHeight-fHeight);
       }
    };
 })();
