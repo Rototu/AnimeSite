@@ -9,7 +9,6 @@ var InteractiveModule = (function () {
       bindHandlers: function () {
          //on game button click
          $("#mediaButton").click(function () {
-
             //change page
             window.myButton = 5;
             window.MenuModule.changeSelectedButton();
@@ -18,7 +17,17 @@ var InteractiveModule = (function () {
 
             //begin game
             InteractiveModule.frame1();
+         }.bind(this));
 
+         //validate name by its length on change
+         this.$name.on('input', function () {
+            var nameLength = this.$name.val().length;
+            if(nameLength > 1) {
+               this.$nameSubmit.show();
+            }
+            else {
+               this.$nameSubmit.hide();
+            }
          }.bind(this));
 
          //handle name submit
@@ -26,7 +35,6 @@ var InteractiveModule = (function () {
             $("#frame1Form").submit();
          });
          $("#frame1Form").submit(function (e) {
-
             //prevent reload
             e.preventDefault();
 
@@ -37,8 +45,31 @@ var InteractiveModule = (function () {
 
             //change to scene 2
             InteractiveModule.frame2();
-
          }.bind(this));
+
+         //handle char select
+         $(".gameChar").click(function () {
+            $(".gameChar").hide();
+            $("#"+this.id).show().css("opacity", 1);
+            switch (this.id) {
+               case "char1":
+               setTimeout(function () {
+                  this.src="img/game/shizuo.gif";
+               }.bind(this), 1000);
+               break;
+
+               case "char2":
+               break;
+
+               case "char3":
+               break;
+
+               case "char4":
+               break;
+
+               default: return;
+            }
+         });
       },
 
       frame1: function () {
@@ -57,18 +88,6 @@ var InteractiveModule = (function () {
                });
             });
          });
-
-
-         //validate name by its length on change
-         this.$name.on('input', function () {
-            var nameLength = this.$name.val().length;
-            if(nameLength > 1) {
-               this.$nameSubmit.show();
-            }
-            else {
-               this.$nameSubmit.hide();
-            }
-         }.bind(this));
       },
 
       frame2: function () {
