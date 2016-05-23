@@ -114,7 +114,7 @@ var AppModule = (function () {
 $(document).on("ready", function () {
    AppModule.init();
    AppModule.bindHandlers();
-   $(window).imagesLoaded(AppModule.loaded());
+   $(document).imagesLoaded(AppModule.loaded());
 });
 
 window.displayLoadingScreen = function() {
