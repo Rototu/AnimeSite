@@ -53,9 +53,7 @@ var InteractiveModule = (function () {
             $("#"+this.id).show().css("opacity", 1);
             switch (this.id) {
                case "char1":
-               setTimeout(function () {
-                  this.src="img/game/shizuo.gif";
-               }.bind(this), 1000);
+               InteractiveModule.characterSelect().shizuo(this);
                break;
 
                case "char2":
@@ -70,6 +68,41 @@ var InteractiveModule = (function () {
                default: return;
             }
          });
+      },
+
+      characterSelect: function() {
+         return {
+            shizuo: function (myChar) {
+               //set choice
+               var $izaya = $("#char4");
+               var $myText =  $("#frame2One");
+               myChar.src = "img/game/shizuocalmright.gif";
+               $myText.text("L-ai ales pe Shizuo...");
+
+               //start animation
+               $izaya.prop("src", "img/game/izayarun.gif").css("opacity", 1).css("left", "1000px").delay(500).show(function () {
+                  move("#char4").ease("linear").translate(-650).duration(3000).end().then(function () {
+                     $izaya.prop("src", "img/game/izaya.gif");
+                     $myText.text("Izaya a venit să îşi bată joc de tine!");
+                  });
+               });
+               setTimeout(function () {
+                  myChar.src = "img/game/shizuo.gif";
+                  setTimeout(function () {
+                     $izaya.prop("src", "img/game/izayarunright.gif");
+                     move("#char4").ease("linear").translate(650).duration(3000).end();
+                     setTimeout(function () {
+                        $myText.text("PRINDE-L!!!");
+                        move("#char1").ease("linear").translate(1000).duration(1500).end().then(InteractiveModule.frame3().shizuo());
+                     }, 1000)
+                  }, 500);
+               },  5000);
+            },
+
+            madoka: function () {
+
+            }
+         };
       },
 
       frame1: function () {
@@ -94,11 +127,19 @@ var InteractiveModule = (function () {
          //animation frame 2
          $("#frame1").hide("slide", {direction:"left"});
          $("#frame2").show("slide", {direction:"right"}, function () {
-            $("#charChoice").delay(1000).fadeIn(5000);
-            $("#frame2One").fadeIn(2000);
+            $("#charChoice").delay(2000).fadeIn(5000);
+            $("#frame2One").delay(1000).fadeIn(3000);
          });
+      },
+
+      frame3: function () {
+         return {
+            shizuo: function () {
+               console.log("it works");
+            }
+         };
       }
-   }
+   };
 })();
 
 $(document).on("ready", function () {

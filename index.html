@@ -163,6 +163,7 @@
          <div id="media" class="screen">
 
             <div id="game" class="noselect">
+
                <div class="gameSlide gameElement" id="frame1">
                   <img class="gameElement" id="korosensei" src="img/game/korosensei.png"/>
                   <h1 class="gameElement" id="frame1One"> Uite, avem un vizitator! </h1>
@@ -170,13 +171,14 @@
                   <form class="gameElement" id="frame1Form">
                      <p>
                         NUME:
-                        <input id="name" type="text"/>
+                        <input id="name" type="text" autocomplete="off"/>
                      </p>
                      <div class="gameElement" id="nameSubmit">
                         CONTINUĂ
                      </div>
                   </form>
                </div>
+
                <div class="gameSlide gameElement" id="frame2">
                   <h1 class="gameElement" id="frame2One"> <span class="myCharName"></span>, cu ce caracter ai vrea să joci? </h1>
                   <div class="gameElement" id="charChoice">
@@ -797,7 +799,7 @@
 
       <!--  vendor scripts -->
       <script src="js/vendor/jquery.parallax.js"></script>
-      <script src="js/vendor/jquery.motio.min.js"></script>
+      <script src="js/vendor/move.min.js"></script>
       <script src="js/vendor/masonry.pkgd.min.js"></script>
       <script src="js/vendor/imagesloaded.pkgd.min.js"></script>
 
