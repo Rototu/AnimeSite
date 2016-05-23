@@ -30,12 +30,12 @@ var AppModule = (function () {
          console.log("Starting volume decrease");
          this.soundTimer = setInterval(function(){
             this.vol = this.$audio.prop("volume");
-            if(this.vol<0.03) {
+            if(this.vol<0.015) {
                console.log("Finished volume decrease");
                clearInterval(this.soundTimer);
             }
             else {
-               this.vol -= 0.0001;
+               this.vol -= 0.0005;
                this.$audio.prop("volume", this.vol);
                window.vol = this.vol;
             }
@@ -49,27 +49,27 @@ var AppModule = (function () {
             switch (this.track) {
 
                case 1:
-               this.$mySrc.prop("src", "music/01.mp3");
-               break;
-
-               case 2:
-               this.$mySrc.prop("src", "music/02.mp3");
-               break;
-
-               case 3:
-               this.$mySrc.prop("src", "music/03.mp3");
-               break;
-
-               case 4:
-               this.$mySrc.prop("src", "music/04.mp3");
-               break;
-
-               case 5:
                this.$mySrc.prop("src", "music/05.mp3");
                break;
 
-               case 6:
+               case 2:
+               this.$mySrc.prop("src", "music/04.mp3");
+               break;
+
+               case 3:
                this.$mySrc.prop("src", "music/06.mp3");
+               break;
+
+               case 4:
+               this.$mySrc.prop("src", "music/03.mp3");
+               break;
+
+               case 5:
+               this.$mySrc.prop("src", "music/01.mp3");
+               break;
+
+               case 6:
+               this.$mySrc.prop("src", "music/02.mp3");
                break;
 
                case 7:

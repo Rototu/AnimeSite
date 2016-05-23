@@ -11,14 +11,9 @@
    height: 90vh;
    position: relative;
    float: left;
-   opacity: 0.8;
    transition: all 0.3s;
    overflow-y: auto;
    text-align: center;
-}
-
-#minus:hover, #plus:hover{
-   opacity: 1;
 }
 
 #minus{
@@ -34,6 +29,10 @@
 #plus h3{
    margin-bottom: 0;
    font-weight: 300;
+}
+
+#plus b{
+   font-weight: 900;
 }
 
 #minus h2{

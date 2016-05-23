@@ -104,6 +104,12 @@
    background-position: center;
 }
 
+#frame3Shizuo{
+   background: black url("../img/game/grass.jpg") no-repeat;
+   background-size: cover;
+   background-position: center;
+}
+
 #frame2One{
    display: inline-block;
    width: 1000px;
@@ -150,4 +156,69 @@
 
 #char4{
    left: 760px;
+}
+
+.coin{
+   position: absolute;
+   width: 20px;
+}
+
+#shizuo{
+   width: 70px;
+   height: 145px;
+   position: absolute;
+   top: 10px;
+   left: 10px;
+}
+
+#shizuoScore{
+   font-size: 20px;
+   color: white;
+   font-weight: 900;
+   display: block;
+   text-align: center;
+   width: 100%;
+   position: absolute;
+   top: 0;
+}
+
+#shizuoImg{
+   height: 120px;
+   position: absolute;
+   bottom: 0;
+}
+
+#shizuoClick{
+   position: absolute;
+   width: 200px;
+   height: 400px;
+   left: 400px;
+   top: 50px;
+}
+
+#runningIzaya{
+   width: 80px;
+   position: absolute;
+   bottom: 10px;
+   right: 10px;
+}
+
+#shizuoEnd{
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+}
+
+#shizuoEndTitle{
+   width: 100%;
+   text-align: center;
+   font-size: 60px;
+   font-weight: 100;
+   line-height: 100px;
+   height: 100px;
+   position: absolute;;
+   top: 200px;
+   left: 0;
+   color: black;
 }
