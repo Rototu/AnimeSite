@@ -116,14 +116,22 @@ var InteractiveModule = (function () {
             madoka: function (myChar) {
 
                //set choice
-               myChar.src = "img/game/madokawind.gif";
+               myChar.src = "img/game/madokawalking.gif";
                var $myText =  $("#frame2One");
                $myText.text("Ai ales-o pe Madoka Kaname :D");
 
                //start animation
-               move("#frame2").set("background-image", 'url("../img/game/swirl.png")').duration("1s").end().then(function () {
-                  $myText.text("Ahmmm, cumva s-a activat portalul dintre universurile animaţiilor...");
-               });
+               move("#char3").translate(200).duration(2000).end();
+               setTimeout(function () {
+                  $("#swirl").delay(1000).fadeIn(3000, function () {
+                     myChar.src = "img/game/madokawind.gif";
+                  });
+                  $myText.text("Ahmmm, ce se întâmplă?");
+                  $("#frame2").css("background-color", "black").delay(5000).fadeOut(3000, function () {
+                     //next frame
+                     InteractiveModule.frame3().madoka();
+                  });
+               }, 2500);
 
             }
 
@@ -193,7 +201,7 @@ var InteractiveModule = (function () {
                });
 
                //random pos for IzayaChar
-               var randomIzayaPos = function (left, right) {
+               var randomIzayaPos = function () {
                   return {
                      x: Math.round(Math.random() * (761)) + 70,
                      y: Math.round(Math.random() * (261)) + 70
@@ -355,6 +363,176 @@ var InteractiveModule = (function () {
 
                }, 2000);
 
+            },
+
+            madoka: function () {
+
+               //set div vars
+               $madoka = $("#madoka");
+               $makise = $("#scientist");
+               $madokaTxt = $("#madokaTxt");
+               $makiseTxt = $("#makiseTxt");
+
+               //set quiz img list
+               var imgList = [
+                  {
+                     name: "Attack on Titan",
+                     src: "img/game/quiz/attackontitan.jpg"
+                  },
+                  {
+                     name: "Neon Genesis Evangelion",
+                     src: "img/game/quiz/eva.gif"
+                  },
+                  {
+                     name: "Fairy Tail",
+                     src: "img/game/quiz/fairytail.jpg"
+                  },
+                  {
+                     name: "Fullmetal Alchemist Brotherhood",
+                     src: "img/game/quiz/fullmetal.gif"
+                  },
+                  {
+                     name: "Monster",
+                     src: "img/game/quiz/monster.jpg"
+                  },
+                  {
+                     name: "Naruto",
+                     src: "img/game/quiz/naruto.gif"
+                  },
+                  {
+                     name: "One Punch Man",
+                     src: "img/game/quiz/op.gif"
+                  },
+                  {
+                     name: "Owari no Seraph",
+                     src: "img/game/quiz/owarinoseraph.jpg"
+                  },
+                  {
+                     name: "Paprika",
+                     src: "img/game/quiz/paprika.gif"
+                  },
+                  {
+                     name: "Perfect Blue",
+                     src: "img/game/quiz/perfectblue.jpg"
+                  },
+                  {
+                     name: "High School DxD",
+                     src: "img/game/quiz/rias.gif"
+                  },
+                  {
+                     name: "Your Lie in April",
+                     src: "img/game/quiz/shigatsu.png"
+                  }
+               ];
+
+               //start animation
+               $("#frame3Madoka").fadeIn(3000, function () {
+                  move("#madoka").set("top", "300px").duration('4s').end().then(function () {
+                     $madoka.prop("src", "img/game/madokaidle.gif");
+                     move("#scientist").translate(-200).duration('3s').end().then(function () {
+
+                        //get char Pos
+                        var madoPos = $madoka.position().left + 140;
+                        var makiPos = $makise.position().left - 255;
+
+                        //set text Pos
+                        $madokaTxt.css("left", madoPos+"px").hide();
+                        $makiseTxt.css("left", makiPos+"px").hide();
+
+                        //randomImg
+                        var randomImg = function () {
+                           return {
+                              myEl: Math.floor(Math.random() * (12)),
+                              myId: Math.floor(Math.random() * (4)) + 1
+                           };
+                        };
+
+                        //continue with animation
+                        setTimeout(function () {
+                           $madokaTxt.text("Ce s-a întâmplat? Unde am ajuns?").fadeIn();
+                           setTimeout(function () {
+                              $makiseTxt.text("Ai ajuns în multiversul anime-urilor...").fadeIn();
+                              setTimeout(function () {
+                                 $makiseTxt.text("Ca să scapi de aici, potrivește universurile anime cu denumirea lor!");
+                                 setTimeout(function () {
+                                    $madokaTxt.text("Fie, sunt pregătită.");
+                                    setTimeout(function () {
+                                       $makiseTxt.text("Să începem atunci!");
+                                       setTimeout(function () {
+
+                                          //start quiz
+                                          $("#animeQuiz").fadeIn();
+                                          var questionSet = 1;
+
+                                          //generate quiz set
+                                          var genQuiz = function () {
+
+                                             //random quiz element
+                                             $(".quizQuestion").css("border-color", "black");
+                                             var x = randomImg().myEl;
+                                             // var r = Math.floor(4*((x/4) - Math.floor(x/4))) + 1;
+                                             var r = randomImg().myId;
+                                             var answer = "q" + r;
+                                             $("#q" + r).prop("src", imgList[x].src);
+
+                                             //txt set
+                                             $madokaTxt.text("Hmmm...");
+                                             $makiseTxt.text(imgList[x].name);
+
+                                             //fill in rest on quiz elements
+                                             var i = 1;
+                                             while(i<4) {
+                                                if(x == 11) x = -1;
+                                                if(r == 4) r = 0;
+                                                r++;
+                                                x++;
+                                                i++;
+                                                $("#q" + r).prop("src", imgList[x].src);
+                                             }
+
+                                             //answer check
+                                             $(".quizQuestion").click(function () {
+
+                                                //if answer right
+                                                if(this.id == answer) {
+                                                   $(this).css("border-color", "green");
+                                                   if(questionSet == 6) {
+                                                      genQuiz = null;
+                                                      $("#animeQuiz").fadeOut(1000);
+                                                      $makiseTxt.text("Adio! ;-) ");
+                                                      setTimeout(function () {
+                                                         InteractiveModule.frame4().madoka();
+                                                      }, 3000);
+                                                   }
+                                                   if(questionSet < 6) {
+                                                      questionSet++;
+                                                      setTimeout(function () {
+                                                         genQuiz();
+                                                      }, 1000);
+                                                   }
+                                                }
+
+                                                //if answer wrong
+                                                else {
+                                                   $(this).css("border-color", "red");
+                                                }
+
+                                             });
+
+                                          };
+
+                                          genQuiz();
+
+                                       }, 3000);
+                                    }, 3000);
+                                 }, 3000);
+                              }, 3000)
+                           }, 3000);;
+                        }, 500);
+
+                     });
+                  });
+               });
             }
          };
       },
@@ -366,6 +544,16 @@ var InteractiveModule = (function () {
                $("#shizuoEnd").show(0).delay(8000).fadeOut();
                $("#shizuoEndTitle").delay(9000).fadeIn(3000);
                $("#frame4Shizuo").show("slide", {direction:"right"}, "slow");
+            },
+
+            madoka: function() {
+               $("#frame3Madoka").fadeOut(500);
+               setTimeout(function () {
+                  $("#frame4Madoka").fadeIn(3000);
+                  setTimeout(function () {
+                     move("#madokaEnd").ease("linear").translate(2000).duration('10s').end();
+                  }, 3500)
+               }, 1500);
             }
          };
       }
