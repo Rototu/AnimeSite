@@ -99,7 +99,9 @@
 }
 
 #frame2{
-   background: black url("../img/game/forest.png") no-repeat;
+   background-image: url("../img/game/forest.png");
+   background-color: black;
+   background-repeat: no-repeat;
    background-size: cover;
    background-position: center;
 }

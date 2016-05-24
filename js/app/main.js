@@ -22,7 +22,7 @@ var AppModule = (function () {
 
       bindHandlers: function () {
          //audio init
-         this.$audio.prop("volume", 0.1);
+         this.$audio.prop("volume", 0.15);
          this.$audio.trigger("load").trigger("play");
          this.vol = this.$audio.prop("volume");
 
@@ -30,12 +30,12 @@ var AppModule = (function () {
          console.log("Starting volume decrease");
          this.soundTimer = setInterval(function(){
             this.vol = this.$audio.prop("volume");
-            if(this.vol<0.015) {
+            if(this.vol<0.05) {
                console.log("Finished volume decrease");
                clearInterval(this.soundTimer);
             }
             else {
-               this.vol -= 0.0005;
+               this.vol -= 0.001;
                this.$audio.prop("volume", this.vol);
                window.vol = this.vol;
             }
@@ -101,10 +101,12 @@ var AppModule = (function () {
          var fHeight = this.$forest.height();
          var wHeight = myDocument.height()*9/10;
          this.$forest.css("top", wHeight-fHeight);
+         $(".container").show();
+         $("#scene").parallax('enable');
          setTimeout(function() {
             window.MenuModule.changeSelectedButton();
             this.$loader.fadeOut(1000);
-         }.bind(this), 3000);
+         }.bind(this), 5000);
 
       }
    };
@@ -121,6 +123,4 @@ window.displayLoadingScreen = function() {
    $("#Sinon").fadeIn(3000);
    $("#loadingGif").fadeIn(3000);
    $(".screen").hide();
-   $(".container").show();
-   $("#scene").parallax('enable');
 }

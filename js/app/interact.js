@@ -62,6 +62,7 @@ var InteractiveModule = (function () {
                break;
 
                case "char3":
+               InteractiveModule.characterSelect().madoka(this);
                break;
 
                case "char4":
@@ -112,7 +113,17 @@ var InteractiveModule = (function () {
             },
 
             //madoka select
-            madoka: function () {
+            madoka: function (myChar) {
+
+               //set choice
+               myChar.src = "img/game/madokawind.gif";
+               var $myText =  $("#frame2One");
+               $myText.text("Ai ales-o pe Madoka Kaname :D");
+
+               //start animation
+               move("#frame2").set("background-image", 'url("../img/game/swirl.png")').duration("1s").end().then(function () {
+                  $myText.text("Ahmmm, cumva s-a activat portalul dintre universurile animaţiilor...");
+               });
 
             }
 
@@ -254,7 +265,7 @@ var InteractiveModule = (function () {
                                  var collision = (charPos.left < coinPos.left + 20 && charPos.left + charWidth > coinPos.left && charPos.top < coinPos.top + 20 && charPos.top + 120 > coinPos.top);
                                  if(collision) {
                                     coins++;
-                                    $("#shizuoScore").text(coins);
+                                    $("#coinScore").text(coins);
                                     $(this).remove();
                                  }
 
@@ -279,9 +290,13 @@ var InteractiveModule = (function () {
                               var xS = izayaPos.left;
                               var yS = izayaPos.top;
 
+                              //little debug
+                              move("#runningIzaya").ease("linear").set("left", xS+"px").set("top", yS+"px").duration(0).end().then(function() {
+                                 $("#runningIzaya").prop("src", "img/game/izaya.gif");
+                              });
+
                               //calculate duration for animation (charSpeed=600px/sec)
                               var runTime = Math.sqrt((xS-x)*(xS-x)+(yS-y)*(yS-y)) / 600;
-                              console.log(runTime);
 
                               //change animation orientation based on running direction
                               if(x>xS) {
@@ -292,6 +307,8 @@ var InteractiveModule = (function () {
                                  $("#runningIzaya").prop("src", "img/game/izayarun.gif");
                                  x += 35;
                               }
+
+                              console.log(x+" "+y+" "+runTime);
 
                               //move char to new pos then reset animation
                               move("#runningIzaya").ease("linear").set("left", x+"px").set("top", y+"px").duration(runTime+"s").end().then(function() {
@@ -346,10 +363,9 @@ var InteractiveModule = (function () {
          return {
             shizuo: function () {
                $("#frame3Shizuo").hide("slide", {direction:"left"});
-               $("#frame4Shizuo").show("slide", {direction:"right"}, function () {
-                  $("#shizuoEnd").delay(1000).fadeIn(100).delay(6500).fadeOut();
-                  $("shizuoEndTitle").delay(9000).fadeIn(1000);
-               });
+               $("#shizuoEnd").show(0).delay(8000).fadeOut();
+               $("#shizuoEndTitle").delay(9000).fadeIn(3000);
+               $("#frame4Shizuo").show("slide", {direction:"right"}, "slow");
             }
          };
       }
