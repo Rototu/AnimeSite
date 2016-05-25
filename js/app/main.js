@@ -106,7 +106,7 @@ var AppModule = (function () {
          setTimeout(function() {
             window.MenuModule.changeSelectedButton();
             this.$loader.fadeOut(1000);
-         }.bind(this), 5000);
+         }.bind(this), 10000);
 
       }
    };
