@@ -15,7 +15,7 @@ var InteractiveModule = (function () {
             window.myButton = 5;
             window.MenuModule.changeSelectedButton();
             $(window).trigger('resize');
-            $("#audio").prop("muted", false).prop("volume", window.vol);
+            $("#audio").prop("muted", false).prop("volume", window.vol/5);
 
             //begin game
             if(!this.started) InteractiveModule.frame1();
@@ -59,6 +59,7 @@ var InteractiveModule = (function () {
                break;
 
                case "char2":
+               InteractiveModule.characterSelect().levi(this);
                break;
 
                case "char3":
@@ -131,6 +132,27 @@ var InteractiveModule = (function () {
                      //next frame
                      InteractiveModule.frame3().madoka();
                   });
+               }, 2500);
+
+            },
+
+            //levi select
+            levi: function (myChar) {
+
+               //set choice
+               myChar.src = "img/game/leviidle.gif";
+               var $myText =  $("#frame2One");
+               $myText.text("L-ai ales pe Levi, obsedatul de curățenie!");
+
+               //start animation
+               setTimeout(function () {
+                  $("#char2").css("right", "300px");
+                  myChar.src = "img/game/levinervous.gif";
+                  move("#char2").ease("linear").translate(-1000).duration(5000).end();
+                  $myText.text("Habar nu ai în ce te-ai băgat...");
+                  setTimeout(function () {
+                        InteractiveModule.frame3().levi();
+                  }, 5000);
                }, 2500);
 
             }
@@ -420,6 +442,46 @@ var InteractiveModule = (function () {
                      src: "img/game/quiz/rias.gif"
                   },
                   {
+                     name: "Regele Shaman",
+                     src: "img/game/quiz/regeleshaman.gif"
+                  },
+                  {
+                     name: "JoJo's Bizzare Adventure",
+                     src: "img/game/quiz/jojo.gif"
+                  },
+                  {
+                     name: "Texhnolyze",
+                     src: "img/game/quiz/texhnolyze.jpg"
+                  },
+                  {
+                     name: "Serial Experiments Lain",
+                     src: "img/game/quiz/lain.jpg"
+                  },
+                  {
+                     name: "Baccano",
+                     src: "img/game/quiz/baccano.gif"
+                  },
+                  {
+                     name: "Durarara!",
+                     src: "img/game/quiz/durarara.jpg"
+                  },
+                  {
+                     name: "Cowboy Bebop",
+                     src: "img/game/quiz/bebop.gif"
+                  },
+                  {
+                     name: "Code Geass",
+                     src: "img/game/quiz/geass.jpg"
+                  },
+                  {
+                     name: "Akira",
+                     src: "img/game/quiz/akira.gif"
+                  },
+                  {
+                     name: "Steins;Gate",
+                     src: "img/game/quiz/steinsgate.gif"
+                  },
+                  {
                      name: "Your Lie in April",
                      src: "img/game/quiz/shigatsu.png"
                   }
@@ -442,7 +504,7 @@ var InteractiveModule = (function () {
                         //randomImg
                         var randomImg = function () {
                            return {
-                              myEl: Math.floor(Math.random() * (12)),
+                              myEl: Math.floor(Math.random() * (22)),
                               myId: Math.floor(Math.random() * (4)) + 1
                            };
                         };
@@ -482,7 +544,7 @@ var InteractiveModule = (function () {
                                              //fill in rest on quiz elements
                                              var i = 1;
                                              while(i<4) {
-                                                if(x == 11) x = -1;
+                                                if(x == 21) x = -1;
                                                 if(r == 4) r = 0;
                                                 r++;
                                                 x++;
@@ -533,6 +595,29 @@ var InteractiveModule = (function () {
                      });
                   });
                });
+            },
+
+            levi: function () {
+
+               //set initial vars
+               var $dancingLevi = $("#levi");
+
+
+               //animation start
+               $("#frame2").hide("slide", {direction:"right"});
+               $("#frame3Levi").show("slide", {direction:"left"});
+               setTimeout(function () {
+                  move("#levi").ease("linear").set("left", "400px").duration("3s").end();
+                  setTimeout(function () {
+                     $("#spotlight").fadeIn(3000);
+                     move("#levi").ease("linear").set("left", "550px").duration("0s").end();
+                     $dancingLevi.prop("src", "img/game/leviidle.gif");
+                     setTimeout(function () {
+                        $dancingLevi.prop("src", "img/game/thisislevi.gif");
+                     }, 1500);
+                  }, 3500)
+               }, 500);
+
             }
          };
       },

@@ -297,3 +297,24 @@
    height: 180px;
    right: 1100px;
 }
+
+#frame3Levi{
+   background: black url("../img/game/disco.jpg") no-repeat;
+   background-size: cover;
+   background-position: center;
+   overflow: hidden;
+}
+
+#spotlight{
+   height: 100%;
+   position: absolute;
+   top: 0;
+   right: 0;
+}
+
+#levi{
+   height: 300px;
+   position: absolute;
+   left: 1000px;
+   bottom: 0;
+}

@@ -22,7 +22,7 @@ var AppModule = (function () {
 
       bindHandlers: function () {
          //audio init
-         this.$audio.prop("volume", 0.15);
+         this.$audio.prop("volume", 0.20);
          this.$audio.trigger("load").trigger("play");
          this.vol = this.$audio.prop("volume");
 
@@ -30,12 +30,12 @@ var AppModule = (function () {
          console.log("Starting volume decrease");
          this.soundTimer = setInterval(function(){
             this.vol = this.$audio.prop("volume");
-            if(this.vol<0.05) {
+            if(this.vol<0.03) {
                console.log("Finished volume decrease");
                clearInterval(this.soundTimer);
             }
             else {
-               this.vol -= 0.001;
+               this.vol -= 0.0005;
                this.$audio.prop("volume", this.vol);
                window.vol = this.vol;
             }
@@ -49,11 +49,11 @@ var AppModule = (function () {
             switch (this.track) {
 
                case 1:
-               this.$mySrc.prop("src", "music/05.mp3");
+               this.$mySrc.prop("src", "music/04.mp3");
                break;
 
                case 2:
-               this.$mySrc.prop("src", "music/04.mp3");
+               this.$mySrc.prop("src", "music/05.mp3");
                break;
 
                case 3:
