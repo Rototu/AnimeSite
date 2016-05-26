@@ -318,3 +318,59 @@
    left: 1000px;
    bottom: 0;
 }
+
+#leviGame{
+   position: absolute;
+   height: 100%;
+   overflow: hidden;
+   width: 400px;
+   left: 10px;
+   top: 0;
+}
+
+#leviProgress{
+   width: 396px;
+   height: 10px;
+   border: solid white 2px;
+   position: absolute;
+   left:0;
+   bottom: 10px;
+}
+
+#danceProgress{
+   height: 100%;
+   background-color: purple;
+   position: absolute;
+   left: 0;
+   bottom: 0;
+   width: 0;
+}
+
+#arrowContainer{
+   position: absolute;
+   left:0;
+   bottom: 30px;
+   width: 100%;
+}
+
+#upArrow, #downArrow, #leftArrow, #rightArrow{
+   position: absolute;
+   top: -110px;
+   width: 90px;
+}
+
+#leftArrow{
+   left: 10px;
+}
+
+#upArrow{
+   left: 110px;
+}
+
+#downArrow{
+   left: 210px;
+}
+
+#rightArrow{
+   left: 310px;
+}
