@@ -43,6 +43,7 @@ var AppModule = (function () {
 
          //prevent image drag
          $('img').on('dragstart', function(event) { event.preventDefault(); });
+
          //switch to next track in playlist on track 'ended' event
          this.$audio.on("ended", function(){
             this.track++;
@@ -106,7 +107,7 @@ var AppModule = (function () {
          setTimeout(function() {
             window.MenuModule.changeSelectedButton();
             this.$loader.fadeOut(1000);
-         }.bind(this), 10000);
+         }.bind(this), 3000);
 
       }
    };
@@ -116,7 +117,9 @@ var AppModule = (function () {
 $(document).on("ready", function () {
    AppModule.init();
    AppModule.bindHandlers();
-   $(document).imagesLoaded(AppModule.loaded());
+   $(document).imagesLoaded(function () {
+      AppModule.loaded();
+   });
 });
 
 window.displayLoadingScreen = function() {

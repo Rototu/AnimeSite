@@ -37,6 +37,7 @@ var InteractiveModule = (function () {
             $("#frame1Form").submit();
          });
          $("#frame1Form").submit(function (e) {
+
             //prevent reload
             e.preventDefault();
 
@@ -47,6 +48,7 @@ var InteractiveModule = (function () {
 
             //change to scene 2
             InteractiveModule.frame2();
+
          }.bind(this));
 
          //handle char select
@@ -67,6 +69,7 @@ var InteractiveModule = (function () {
                break;
 
                case "char4":
+               InteractiveModule.characterSelect().yandere(this);
                break;
 
                default: return;
@@ -151,9 +154,28 @@ var InteractiveModule = (function () {
                   move("#char2").ease("linear").translate(-1000).duration(5000).end();
                   $myText.text("Habar nu ai în ce te-ai băgat...");
                   setTimeout(function () {
-                        InteractiveModule.frame3().levi();
+                     InteractiveModule.frame3().levi();
                   }, 5000);
                }, 2500);
+
+            },
+
+            //yandere select
+            yandere: function (myChar) {
+
+               //set choice
+               myChar.src = "img/game/yuno.gif";
+               var $myText =  $("#frame2One");
+               $myText.text("Ai ales-o pe Ynnej Ocin!");
+               move("#char4").set("left", "400px").duration("1.5s").end();
+
+               //start animation
+               setTimeout(function () {
+                  $myText.text("Ei îi place să manipuleze oamenii...");
+                  setTimeout(function () {
+                     InteractiveModule.frame3().yandere();
+                  }, 3000);
+               }, 3000);
 
             }
 
@@ -248,7 +270,7 @@ var InteractiveModule = (function () {
                         //game mechanics init
                         setTimeout(function () {
 
-                           //move Shizou onClick
+                           //move Shizuo onClick
                            $("#frame3Shizuo").click(function (e) {
 
                               //calculate mouse pos relative to frame
@@ -557,7 +579,11 @@ var InteractiveModule = (function () {
 
                                                 //if answer right
                                                 if(this.id == answer) {
+
+                                                   //mark correct answer
                                                    $(this).css("border-color", "green");
+
+                                                   //end after 5 questions
                                                    if(questionSet == 6) {
                                                       genQuiz = null;
                                                       $("#animeQuiz").fadeOut(1000);
@@ -566,12 +592,15 @@ var InteractiveModule = (function () {
                                                          InteractiveModule.frame4().madoka();
                                                       }, 3000);
                                                    }
+
+                                                   //continue to next question
                                                    if(questionSet < 6) {
                                                       questionSet++;
                                                       setTimeout(function () {
                                                          genQuiz();
                                                       }, 1000);
                                                    }
+
                                                 }
 
                                                 //if answer wrong
@@ -607,6 +636,7 @@ var InteractiveModule = (function () {
                $mySrc.prop("src", "music/attack.mp3");
                $audio.load().prop("currentTime",0).trigger("play");
                vol = $audio.prop("volume");
+               time = 2500;
 
                //animation start
                $("#frame2").hide("slide", {direction:"right"});
@@ -674,7 +704,7 @@ var InteractiveModule = (function () {
                               move(myArrow).set("top", "-110px").duration(0).end();
 
                               //animate selected arrow
-                              move(myArrow).ease("linear").set("top", "1000px").duration("3.5s").end();
+                              move(myArrow).ease("linear").set("top", "1000px").duration(time+500).end();
 
                            };
 
@@ -693,8 +723,11 @@ var InteractiveModule = (function () {
                               console.log(arrowPos);
                               if(arrowPos >= 365 && arrowPos <= 395) {
 
+                                 //increase speed
+                                 time -= 150;
+
                                  //verify progress
-                                 if(progressBar < 100) progressBar += 12.5;
+                                 if(progressBar < 100) progressBar += 10;
                                  if(progressBar == 100) {
 
                                     //music decrease volume
@@ -719,6 +752,7 @@ var InteractiveModule = (function () {
                                  progressBarUpdate();
 
                               }
+
                            };
 
 
@@ -766,14 +800,125 @@ var InteractiveModule = (function () {
                            //the timer
                            var myTimer = setInterval(function () {
                               arrowFall();
-                           }, 4000);
+                           }, time);
 
                         }, 2000);
                      }, 1500);
                   }, 3500)
                }, 500);
 
+            },
+
+            yandere: function () {
+
+               //init vars
+               var $myAnimeChar = null;
+               var animeBg;
+               var animeTxt;
+               var charSrc = null;
+               var bgSrc = null;
+
+               //scene init
+               $("#frame2").fadeOut(300);
+               $("#frame3Yandere").fadeIn(1000);
+               $("#selectedCharName").text("---");
+               var animeOptions = {
+                  stack: ".draggableChar",
+                  containment: "#animeContainer",
+                  scroll: false,
+                  snap: ".draggableChar"
+               };
+               $(".draggableChar").unbind('dragstart').draggable(animeOptions);
+
+               //char on click is selected
+               $(".draggableChar").click(function () {
+                  $myAnimeChar = $(this);
+                  $("#selectedCharName").text(this.id);
+               });
+
+               //form handling
+               $("#animeController").submit(function (e) {
+
+                  //prevent reload
+                  e.preventDefault();
+
+                  //submitted vars
+                  myAnimeChar = $("#charSelect").val();
+                  animeBg = $("#bgSelect").val();
+                  animeTxt = $("#replica").val();
+
+                  //handle submitted vars
+                  if(myAnimeChar) {
+                     charChange();
+                     bgChange();
+                     $myAnimeChar.css("height", animeTxt);
+                  }
+
+               });
+
+               //char change
+               var charChange = function () {
+
+                  //set src
+                  switch (myAnimeChar) {
+
+                     case "makise": charSrc = "img/game/scientist.gif";
+                     break;
+
+                     case "shinji": charSrc = "img/game/shinji.gif";
+                     break;
+
+                     case "izaya": charSrc = "img/game/izaya.gif";
+                     break;
+
+                     case "mikasa": charSrc = "img/game/neko.gif";
+                     break;
+
+                     case "unit01": charSrc = "img/game/unit01.gif";
+                     break;
+
+                     case "shizuo": charSrc = "img/game/shizuocalmright.gif";
+                     break;
+
+                     case "levi": charSrc = "img/game/leviidle.gif";
+                     break;
+
+                     default: return;
+
+                  }
+
+                  //change selected char to set src
+                  $myAnimeChar.prop("src", charSrc);
+
+               };
+
+               //bg change
+               var bgChange = function () {
+
+                  //set src
+                  switch (animeBg) {
+
+                     case "street": bgSrc = "img/game/durarara.jpg";
+                     break;
+
+                     case "sky": bgSrc = "img/game/cer.jpg";
+                     break;
+
+                     case "space": bgSrc = "img/game/bebop.jpg";
+                     break;
+
+                     default: return;
+
+                  }
+
+                  //change bg to set src
+                  move("#frame3Yandere").set("background-image", 'url("' +bgSrc+'")').duration("1s").end();
+
+               };
+
+
             }
+
          };
       },
 

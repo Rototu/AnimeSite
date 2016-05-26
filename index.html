@@ -228,6 +228,59 @@
                   </div>
                </div>
 
+               <div class="gameSlide gameElement" id="frame3Yandere">
+
+                  <form id="animeController" name="animeController">
+
+                     <p id="tutorial">
+                        Pentru a selecta un caracter facţi click pe el.<br />
+                        Pentru a-l mişca tineţi apăsat pe el şi trageţi-l.
+                     </p>
+                     <hr /><br />
+
+                     <div id="selectedChar">
+                        CARACTERUL SELECTAT <br />
+                        <span id="selectedCharName"></span>
+                     </div>
+
+                     <span>Schimbă caracterul în:</span>
+                     <select id="charSelect">
+                        <option value="makise">Makise</option>
+                        <option value="shinji">Shinji</option>
+                        <option value="izaya">Izaya</option>
+                        <option value="mikasa">Mikasa</option>
+                        <option value="unit01">Unit 01</option>
+                        <option value="shizuo">Shizuo</option>
+                        <option value="levi">Levi</option>
+                     </select>
+
+                     <span>Schimbă fundalul în:</span>
+                     <select id="bgSelect">
+                        <option value="street">Stradă iluminată</option>
+                        <option value="sky">Cer înstelat</option>
+                        <option value="space">Nava Bebop</option>
+                     </select>
+
+                     <span>Înălţimea caracterului selectat</span>
+                     <select id="replica">
+                        <option value="100px">100px</option>
+                        <option value="200px">200px</option>
+                        <option value="300px">300px</option>
+                        <option value="400px">400px</option>
+                     </select>
+
+                     <button type="submit" form="animeController" value="Submit">Actualizează</button>
+
+                  </form>
+
+                  <div id="animeContainer">
+                     <img class="draggableChar" id="Char1" src="img/game/shinji.gif"/>
+                     <img class="draggableChar" id="Char2" src="img/game/neko.gif"/>
+                     <img class="draggableChar" id="Char3" src="img/game/unit01.gif"/>
+                  </div>
+
+               </div>
+
                <div class="gameSlide gameElement" id="frame4Shizuo">
                   <div class="gameElement" id="shizuoEndTitle">Felicitări! L-ai prins pe Izaya!</div>
                   <img class="gameElement" id="shizuoEnd" src="img/game/izayaShizu.gif" />

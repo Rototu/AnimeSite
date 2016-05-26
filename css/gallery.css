@@ -407,3 +407,78 @@
    height: 220px;
    left: 277px;
 }
+
+#frame3Yandere{
+   background: white url("../img/game/durarara.jpg") no-repeat;
+   background-size: cover;
+   background-position: center;
+   overflow: hidden;
+}
+
+#animeController{
+   position: absolute;
+   width: 20%;
+   height: 100%;
+   top: 0;
+   left: 0;
+   background-color: black;
+   color: white;
+   display: block;
+   text-align: center;
+}
+
+#animeContainer{
+   position: absolute;
+   width: 80%;
+   height: 100%;
+   top: 0;
+   right: 0;
+}
+
+.draggableChar{
+   position: absolute;
+   width: auto;
+   bottom: 0;
+}
+
+#Char1{
+   left: 80px;
+   height: 180px;
+}
+
+#Char2{
+   left: 180px;
+   height: 200px;
+}
+
+#Char3{
+   left: 450px;
+   height: 400px;
+}
+
+#selectedChar{
+   display: block;
+   height: 40px;
+   text-align: center;
+   width: 100%;
+   font-size: 15px;
+   font-weight: 100;
+   margin-bottom: 10px;
+}
+
+#tutorial{
+   margin-top: 30px;
+   text-align: center;
+   width: 100%;
+   margin-bottom: 20px;
+}
+
+#selectedCharName{
+   font-weight: 900;
+}
+
+#charSelect, #replica, #bgSelect{
+   text-align: center;
+   width: 90%;
+   margin-bottom: 20px;
+}
