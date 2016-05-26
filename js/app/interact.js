@@ -813,10 +813,12 @@ var InteractiveModule = (function () {
 
                //init vars
                var $myAnimeChar = null;
+               var myCharSel;
                var animeBg;
                var animeTxt;
                var charSrc = null;
                var bgSrc = null;
+               var myImg;
 
                //scene init
                $("#frame2").fadeOut(300);
@@ -834,6 +836,7 @@ var InteractiveModule = (function () {
                $(".draggableChar").click(function () {
                   $myAnimeChar = $(this);
                   $("#selectedCharName").text(this.id);
+                  myImg = this;
                });
 
                //form handling
@@ -843,15 +846,16 @@ var InteractiveModule = (function () {
                   e.preventDefault();
 
                   //submitted vars
-                  myAnimeChar = $("#charSelect").val();
+                  myCharSel = $("#charSelect").val();
                   animeBg = $("#bgSelect").val();
                   animeTxt = $("#replica").val();
 
                   //handle submitted vars
-                  if(myAnimeChar) {
+                  if($myAnimeChar) {
                      charChange();
                      bgChange();
-                     $myAnimeChar.css("height", animeTxt);
+                     var ratio = myImg.naturalWidth / myImg.naturalHeight;
+                     $myAnimeChar.css("height", animeTxt+"px").css("width", animeTxt*ratio+"px");
                   }
 
                });
@@ -860,7 +864,7 @@ var InteractiveModule = (function () {
                var charChange = function () {
 
                   //set src
-                  switch (myAnimeChar) {
+                  switch (myCharSel) {
 
                      case "makise": charSrc = "img/game/scientist.gif";
                      break;
