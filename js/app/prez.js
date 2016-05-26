@@ -23,7 +23,7 @@ var PresentationModule = (function () {
       },
 
       bindHandlers: function () {
-         $('#cButton').click(function() {
+         $('#cButton').click(function () {
             //load page
             window.myButton = 2;
             console.log(window.myButton);
@@ -46,24 +46,24 @@ var PresentationModule = (function () {
             myButton = null;
 
             //keypress handling
-            $(document).keydown(function(e) {
+            $(document).keydown(function (e) {
                switch(e.which) {
 
-                  //up key
+                  //left key
                   case 37:
                   if(i>1 && kPress) {
                      i--;
                      kPress = false;
-                     setTimeout(function() { kPress = true; }, 50);
+                     setTimeout(function () { kPress = true; }, 50);
                   }
                   break;
 
-                  //down key
-                  case 39: // down
+                  //right key
+                  case 39:
                   if(i<5 && kPress) {
                      i++;
                      kPress = false;
-                     setTimeout(function() { kPress = true; }, 50);
+                     setTimeout(function () { kPress = true; }, 50);
                   }
                   break;
 
@@ -103,16 +103,16 @@ var PresentationModule = (function () {
          }.bind(this));
 
          //hover effect
-         this.$sidebarSection.hover(function() {
+         this.$sidebarSection.hover(function () {
             $(this).css('opacity', 1);
             PresentationModule.pageButton();
-         }, function() {
+         }, function () {
             $(this).css('opacity', 0.2);
             PresentationModule.pageButton();
          });
 
          //handle page button click
-         this.$sidebarSection.click(function(event) {
+         this.$sidebarSection.click(function (event) {
 
             //hide title slide elements
             $('.char').hide();
@@ -165,7 +165,7 @@ var PresentationModule = (function () {
    };
 })();
 
-$(document).on("ready", function() {
+$(document).on("ready", function () {
 
    console.log("prez js loaded");
    PresentationModule.init();

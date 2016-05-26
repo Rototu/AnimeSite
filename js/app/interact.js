@@ -602,7 +602,11 @@ var InteractiveModule = (function () {
                //set initial vars
                var $dancingLevi = $("#levi");
                var progressBar = 0;
-
+               $mySrc = $("#aSrc");
+               $audio = $("#audio");
+               $mySrc.prop("src", "music/attack.mp3");
+               $audio.load().prop("currentTime",0).trigger("play");
+               vol = $audio.prop("volume");
 
                //animation start
                $("#frame2").hide("slide", {direction:"right"});
@@ -614,14 +618,30 @@ var InteractiveModule = (function () {
                      move("#levi").ease("linear").set("left", "550px").duration("0s").end();
                      $dancingLevi.prop("src", "img/game/leviidle.gif");
                      setTimeout(function () {
+
+                        //music amp
+                        var soundLeviTimer = setInterval(function(){
+                           vol = $audio.prop("volume");
+                           if(vol>0.05) {
+                              console.log("Finished volume increase");
+                              clearInterval(soundLeviTimer);
+                           }
+                           else {
+                              vol += 0.0005;
+                              $audio.prop("volume", vol);
+                           }
+                        }, 10);
+
+                        //start dancing
                         $dancingLevi.prop("src", "img/game/thisislevi.gif");
                         setTimeout(function () {
 
                            //game init
-                           var danceOn = true;
+                           var danceOn = false;
                            var myArrow = null;
+                           $("#leviGame").fadeIn(2000);
 
-                           //random arrow
+                           //select random arrow
                            var randomArrow = function () {
                               var arr = Math.floor(Math.random() * (4)) + 1;
                               switch (arr) {
@@ -641,10 +661,97 @@ var InteractiveModule = (function () {
                               }
                            };
 
+                           //make arrow fall
                            var arrowFall = function () {
+
+                              //enable listening
+                              danceOn = true;
+
+                              //get random arrow
                               myArrow = randomArrow();
-                              move("#"+myArrow)
+
+                              //reset arrow
+                              move(myArrow).set("top", "-110px").duration(0).end();
+
+                              //animate selected arrow
+                              move(myArrow).ease("linear").set("top", "1000px").duration("3.5s").end();
+
                            };
+
+                           //update progressBar
+                           var progressBarUpdate = function () {
+                              move("#danceProgress").ease("linear").set("width", progressBar+"%").duration("0.5s").end();
+                           };
+
+                           //test arrow position
+                           var arrowCol = function () {
+
+                              //get postion
+                              var arrowPos = $(myArrow).position().top;
+
+                              //if arrow is in container
+                              console.log(arrowPos);
+                              if(arrowPos >= 365 && arrowPos <= 395) {
+
+                                 //verify progress
+                                 if(progressBar < 100) progressBar += 12.5;
+                                 if(progressBar == 100) {
+                                    clearInterval(myTimer);
+                                    InteractiveModule.frame4().levi();
+                                 }
+
+                                 //update progress
+                                 progressBarUpdate();
+
+                              }
+                           };
+
+
+
+                           //keypress listener
+                           $(document).keydown(function (e) {
+
+                              //if listening enabled
+                              if(danceOn) {
+
+                                 //disable keypress until next arrowFall
+                                 danceOn = false;
+
+                                 //verify if pressed key is falling arrow
+                                 switch(e.which) {
+
+                                    //left key
+                                    case 37:
+                                    if(myArrow == "#leftArrow") arrowCol();
+                                    break;
+
+                                    //up key
+                                    case 38:
+                                    if(myArrow == "#upArrow") arrowCol();
+                                    break;
+
+                                    //left key
+                                    case 39:
+                                    if(myArrow == "#rightArrow") arrowCol();
+                                    break;
+
+                                    //down key
+                                    case 40:
+                                    if(myArrow == "#downArrow") arrowCol();
+                                    break;
+
+                                    // exit for other keys
+                                    default: return;
+
+                                 }
+
+                              }
+                           });
+
+                           //the timer
+                           var myTimer = setInterval(function () {
+                              arrowFall();
+                           }, 4000);
 
                         }, 2000);
                      }, 1500);
@@ -657,6 +764,7 @@ var InteractiveModule = (function () {
 
       frame4: function () {
          return {
+
             shizuo: function () {
                $("#frame3Shizuo").hide("slide", {direction:"left"});
                $("#shizuoEnd").show(0).delay(8000).fadeOut();
@@ -664,7 +772,7 @@ var InteractiveModule = (function () {
                $("#frame4Shizuo").show("slide", {direction:"right"}, "slow");
             },
 
-            madoka: function() {
+            madoka: function () {
                $("#frame3Madoka").fadeOut(500);
                setTimeout(function () {
                   $("#frame4Madoka").fadeIn(3000);
@@ -672,7 +780,19 @@ var InteractiveModule = (function () {
                      move("#madokaEnd").ease("linear").translate(2000).duration('10s').end();
                   }, 3500)
                }, 1500);
+            },
+
+            levi: function () {
+               $("#frame3Levi").fadeOut(500);
+               setTimeout(function () {
+                  $("#frame4Levi").fadeIn(1000);
+                  setTimeout(function () {
+                     $("#leviEndTitle").fadeIn(3000);
+                     $("#leviEnd").fadeIn(3000);
+                  }, 1500)
+               }, 1000);
             }
+
          };
       }
    };

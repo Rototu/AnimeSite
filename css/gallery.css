@@ -213,7 +213,7 @@
    width: 100%;
 }
 
-#shizuoEndTitle, #madokaEndTitle{
+#shizuoEndTitle{
    width: 100%;
    text-align: center;
    font-size: 60px;
@@ -298,6 +298,19 @@
    right: 1100px;
 }
 
+#madokaEndTitle{
+   width: 100%;
+   text-align: center;
+   font-size: 60px;
+   font-weight: 100;
+   line-height: 100px;
+   height: 100px;
+   position: absolute;;
+   top: 100px;
+   left: 0;
+   color: black;
+}
+
 #frame3Levi{
    background: black url("../img/game/disco.jpg") no-repeat;
    background-size: cover;
@@ -339,7 +352,7 @@
 
 #danceProgress{
    height: 100%;
-   background-color: purple;
+   background-color: white;
    position: absolute;
    left: 0;
    bottom: 0;
@@ -353,10 +366,10 @@
    width: 100%;
 }
 
-#upArrow, #downArrow, #leftArrow, #rightArrow{
+.arrow{
    position: absolute;
    top: -110px;
-   width: 90px;
+   width: 80px;
 }
 
 #leftArrow{
@@ -373,4 +386,24 @@
 
 #rightArrow{
    left: 310px;
+}
+
+#leviEndTitle{
+   width: 100%;
+   text-align: center;
+   font-size: 60px;
+   font-weight: 100;
+   line-height: 100px;
+   height: 100px;
+   position: absolute;;
+   top: 100px;
+   left: 0;
+   color: black;
+}
+
+#leviEnd{
+   position: absolute;
+   bottom: 0;
+   height: 220px;
+   left: 277px;
 }
