@@ -601,6 +601,7 @@ var InteractiveModule = (function () {
 
                //set initial vars
                var $dancingLevi = $("#levi");
+               var progressBar = 0;
 
 
                //animation start
@@ -614,6 +615,38 @@ var InteractiveModule = (function () {
                      $dancingLevi.prop("src", "img/game/leviidle.gif");
                      setTimeout(function () {
                         $dancingLevi.prop("src", "img/game/thisislevi.gif");
+                        setTimeout(function () {
+
+                           //game init
+                           var danceOn = true;
+                           var myArrow = null;
+
+                           //random arrow
+                           var randomArrow = function () {
+                              var arr = Math.floor(Math.random() * (4)) + 1;
+                              switch (arr) {
+                                 case 1: return "#leftArrow";
+                                 break;
+
+                                 case 2: return "#upArrow";
+                                 break;
+
+                                 case 3: return "#downArrow";
+                                 break;
+
+                                 case 4: return "#rightArrow";
+                                 break;
+                                 default:
+                                 return null;
+                              }
+                           };
+
+                           var arrowFall = function () {
+                              myArrow = randomArrow();
+                              move("#"+myArrow)
+                           };
+
+                        }, 2000);
                      }, 1500);
                   }, 3500)
                }, 500);
