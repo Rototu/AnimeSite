@@ -622,7 +622,7 @@ var InteractiveModule = (function () {
                         //music amp
                         var soundLeviTimer = setInterval(function(){
                            vol = $audio.prop("volume");
-                           if(vol>0.05) {
+                           if(vol>0.04) {
                               console.log("Finished volume increase");
                               clearInterval(soundLeviTimer);
                            }
@@ -696,6 +696,21 @@ var InteractiveModule = (function () {
                                  //verify progress
                                  if(progressBar < 100) progressBar += 12.5;
                                  if(progressBar == 100) {
+
+                                    //music decrease volume
+                                    var soundLTimer = setInterval(function(){
+                                       vol = $audio.prop("volume");
+                                       if(vol<0.01) {
+                                          console.log("Finished volume increase");
+                                          clearInterval(soundLTimer);
+                                       }
+                                       else {
+                                          vol -= 0.0005;
+                                          $audio.prop("volume", vol);
+                                          window.vol = vol;
+                                       }
+                                    }, 10);
+
                                     clearInterval(myTimer);
                                     InteractiveModule.frame4().levi();
                                  }

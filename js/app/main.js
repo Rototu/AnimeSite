@@ -30,7 +30,7 @@ var AppModule = (function () {
          console.log("Starting volume decrease");
          this.soundTimer = setInterval(function(){
             this.vol = this.$audio.prop("volume");
-            if(this.vol<0.03) {
+            if(this.vol<0.02) {
                console.log("Finished volume decrease");
                clearInterval(this.soundTimer);
             }
