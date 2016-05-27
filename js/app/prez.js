@@ -33,6 +33,7 @@ var PresentationModule = (function () {
 
             //ready grid
             $("grid-item").show();
+            $(".grid").show(0);
 
             //start page
             $('.char').hide().fadeIn(1000);
